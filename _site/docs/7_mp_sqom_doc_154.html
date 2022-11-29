@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="MPtools" /></head>
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>MPtools</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">
+			<img src="/public/img/mp_logo_b43h_light.pdf " width=100%>
+    </a>
+	</div>
+
+	<!--
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">MPtools</a>
+	</div>
+-->
+	<p class="lead">neutron and Xray diffuse scattering from distorted lattices</p>
+</div>
+
+	<br>
+
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+    <li class="nav-title">Pages</li>
+	  
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/0_README.html">
+	            	Welcome
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/1_mp_data_doc_154.html">
+	            	Data handling
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/2_mp_lbin_doc_v154.html">
+	            	General ASCII data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/3_mp_dbin_doc_v154.html">
+	            	DLPOLY data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/4_mp_insp_doc_v154.html">
+	            	Binary data check
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/5_mp_pdf_doc_v154.html">
+	            	Pair distribution functions
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/6_mp_dos_doc_v154.html">
+	            	Vibrational density of states
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/7_mp_sqom_doc_154.html">
+	            	Scattering function maps
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_install_v154.html">
+	            	Download and install
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_use_v154.html">
+	            	Get started
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/9_mp_tools_about.html">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+	
+</div>
+
+
+<div class="sidebar-item sidebar-footer">
+  <br>
+  <br>
+	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+  <br>
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header home">
+		<div class="post-title"> 
+			Scattering function maps
+		</div>
+	</header>
+
+	<div class="post-content">
+		<p>The <code class="highlighter-rouge">MP_SQOM</code> tool calculates the scattering functions of simulated (MD, phasefield etc.) crystalline systems, plots their maps and saves the corresponding numerical values (ASCII) and graphics (<code class="highlighter-rouge">.PS</code>, <code class="highlighter-rouge">.PNG</code>) for further use.</p>
+
+<h4 id="start">1/ INPUT</h4>
+<p>A number of initial settings is read from the accompanying <code class="highlighter-rouge">.PAR</code> file from several name lists. Typical input values are displayed below together with brief explanations following the exclamation mark:</p>
+
+<blockquote>
+  <p>&amp;MP_GEN<br />
+    J_VERB = 1       ! (0/1) verbose command line output<br />
+    J_PROC = 0       ! requested number of OpenMP parallel processes, 0 = automatic<br />
+                    ! maximum (eg. 12 for a 12 core Xeon processor)</p>
+
+  <p>&amp;MP_OUT<br />
+    J_WEIGHT = 2     ! 1 = uniform weighting, 2 = neutron b_coh; 3 = Xray form-factors<br />
+    J_LOGSC = 1      ! 1 = logarithmic scale for plots (0=linear)<br />
+    J_TXT = 0        ! 1 = accompany .PS output by recording map intensities to .TXT file<br />
+                    ! (always linear scale, speckle filter applied if active)<br />
+    J_GRID = 0       ! 1 = display grid overlay on PG_PLOT graphs<br />
+    PG_OUT = ‘vcps’  ! set device for color map output: PNG, TPNG, CPS, VCPS, NULL<br />
+                    ! (cf. PG_PLOT notes)</p>
+
+  <p>&amp;MP_SQOM<br />
+    N_INT = 0        ! integration width in time (number of snapshots, 0 = automatic<br />
+                    ! choice NFILE/2)<br />
+    S_TRIG = 0       ! trigger level of the speckle filter (0 = OFF, 2 = log_2 ratio<br />
+                     ! between neighbours)<br />
+    J_ONEPH = 0      ! FT start mode, 0 = NUFFT (usual), 1 = one-phonon mode (very slow,<br />
+                    ! use for verification only), runtime toggle 0/1 available<br />
+    J_QSQ = 0        ! 0 = plot S(Q,ω)/Q^2 (recommended for better clarity of color<br />
+                    ! maps); 1 = keep the natural Q^2 trend of S(Q,ω)</p>
+</blockquote>
+
+<p>A self-explaining dialogue guides through the specifications of the input data files. Data converted by both the <code class="highlighter-rouge">CELL</code> and the <code class="highlighter-rouge">BULK</code> input methods are eligible as input to <code class="highlighter-rouge">MP_SQOM</code>.</p>
+
+<p>The actual data type and further information is retrieved from the header of the first data file in an input sequence. The user has to ensure that all the subsequent data files in the sequence are consistent with this information and that they are contiguous in time whenever energy-resolved outcome (<code class="highlighter-rouge">S(Q,ω)</code>) is the goal. In case of doubt the contents of the data files (header, individual atom data) can be verified using the <code class="highlighter-rouge">MP_INSP</code> tool.</p>
+
+<h4 id="2-lattice-sums-and-time-integrals">2/ LATTICE SUMS AND TIME INTEGRALS</h4>
+<p>The Fourier sum over all the atoms is calculated by the non-uniform FFT technique (cf. references), which offers calculation speeds comparable to FFT over regular lattices. The calculation automatically assumes periodic continuation of the box and evaluates the sum only at space frequencies commensurable with the box size to avoid truncation effects. An exception to this case is the <code class="highlighter-rouge">BULK</code> data case with no explicit periodicity being defined (<code class="highlighter-rouge">N_ROW = 1 1 1</code>), which has to be handled as an aperiodic object. In such a case the Q-space range of the maps is specified in inverse Angstroms rather than in number of Brillouin zones and a window function (Hann) in real space is activated automatically to damp the truncation oscillations. This implies a factor of 2 loss in Q-resolution but permits to handle real space objects without any constraints, neither on their internal structure nor on the form of the simulation box.</p>
+
+<p>Whenever energy-resolved maps are to be produced, <code class="highlighter-rouge">MP_SQOM</code> will calculate Fourier transform of a sequence of <code class="highlighter-rouge">S(Q)</code> maps from an time-array of snapshots. As the MD dumps are effectuated with a constant time step, this is effectuated by conventional FFT, using a window function (Hann) to damp the truncation effects. The automatic choice is to take an integral over half the length of the time series and, after multiplication by the complex conjugate of the central frame transform, to accumulate a sliding sum such integrals over the other half. This choice can be modified within the “burried” options (cf. option 10 below). As consequence the frequency resolution will correspond to the reciprocal of 1/4 of the total time series length (1/2 coming from the integration range choice and 1/2 coming from its further reduction by the window function).</p>
+
+<h4 id="3-plotting">3/ PLOTTING</h4>
+<p><code class="highlighter-rouge">MP_SQOM</code> is intended to provide a self-explaining command line dialogue guiding the user through the different stages of the plotting exercise. Some patience and trial-and-error learning are unavoidable.</p>
+
+<p>Upon start-up <code class="highlighter-rouge">MP_SQOM</code> will produce a total scattering map for the specified input data sequence, Q-range etc., which is intended for experimenting with the adequate intensity scale (color range) and for a first familiarisation with the system. The total scattering function <code class="highlighter-rouge">S(Q)</code> is an integral of <code class="highlighter-rouge">S(Q,ω)</code> over all energy/frequency spectrum. Hence, if for whatever reason the map exhibits a too weak presence of diffuse scattering, it doesn’t make much sense to continue towards plotting energy-resolved <code class="highlighter-rouge">S(Q,ω)</code> maps. Rather the  volume of the input data has to be questioned (simulation box size, number of snapshot files).</p>
+
+<p>When indicating the central of the map in Q-space, it is possible to include the vertical component to produce a map which is above or below the nominal equatorial plane, eg. after having chosen the (hk0) option the input of 2 2 0 will produce a (h k 0) map with the corresponding centre while 2 2 .5 will produce the (h k .5) map (i.e. lifted by 0 0 .5).</p>
+
+<p>All the plotting options are displayed in a way-point menu (upon exiting from the total scattering plot by setting <code class="highlighter-rouge">c_min, c_max = 0 0</code>)</p>
+
+<p>Choose a plot option (PS/TXT file output is OFF):</p>
+<blockquote>
+
+  <p> 0  EXIT<br />
+   1  explore total scattering     (-1 edit atom masks)<br />
+   2  explore E=const maps         (-2 edit atom masks)<br />
+   3  make a stack of E=const maps (-3 reset atom masks)<br />
+   4  explore E(Q) maps            (-4 edit atom masks)<br />
+   5  make a stack of E(Q) maps    (-5 reset atom masks)<br />
+   6  change the HKL plane, range and centre (BZ)<br />
+                                   (-6 change the real space range)<br />
+   7  toggle the NU_FFT mode to ONE_PHONON (go on via 6)<br />
+   8  toggle the PS/TXT output ON (mind the TXT switch in PAR)<br />
+   9  toggle the S(Q)/Q^2 scaling to S(Q)<br />
+  10  options: change the time integration window width, weighting etc.</p>
+</blockquote>
+
+<p>Principal functionalities of <code class="highlighter-rouge">MP_SQOM</code></p>
+
+<ul>
+  <li>
+    <p>total scattering <code class="highlighter-rouge">S(Q)</code> maps, calculated as sum of modulus squared of the diffracted wave amplitudes with Xray, neutron or unit amplitudes (to be specified in the <code class="highlighter-rouge">.PAR</code> file, can be switched under option 9 in the general switch board); this an automatic introductory option for each new plotting session, upon exit from it it the choice of all the other options is available</p>
+  </li>
+  <li>
+    <p>energy resolved E = const momentum space maps and their sequences (options 2 and 3 in the general switch board)</p>
+  </li>
+  <li>
+    <p>energy resolved Q-E momentum-energy space maps and their sequences (options 3 and 4 in the general switch board)</p>
+  </li>
+  <li>
+    <p>contributions of chosen atom types can be masked out (by specifying negative option numbers opening a subsequent dialogue); however, it is necessary to keep in mind that for coherent scattering it is the amplitudes and not the intensities that are additive: all atoms interfere with all other atoms!</p>
+  </li>
+  <li>
+    <p>each plot provides a dialogue to adjust the intensity range of the map</p>
+  </li>
+</ul>
+
+<p>All the plots can be produced with a choice of units, neutron and Xray weights. The values of neutron coherent scattering lengths (b<sub>coh</sub>) and the parameters to calculate the Xray atom factors (with their Q-dependence) are read from the files  <code class="highlighter-rouge">NEUTRON_XS.TXT</code>	and <code class="highlighter-rouge">XRAY_FF.TXT</code> placed in the <code class="highlighter-rouge">/USR/LOCAL/MP_TOOLS/REF</code> directory (normally created by the installation script). When searching these files, <code class="highlighter-rouge">MP_SQOM</code> identifies atoms by their label (1st column of the <code class="highlighter-rouge">ATOMS</code> list in the <code class="highlighter-rouge">.PAR</code> file) and by their ionisation state (given in the last column of the same list). If for whatever reason different values are to be used, place an edited copy of those files under the same name into the working directory (only the pertinent atoms are necessary) - <code class="highlighter-rouge">MP_SQOM</code> starts its search <a href="#start">here</a>.</p>
+
+<h4 id="4-output">4/ OUTPUT</h4>
+
+<p>Automatic graphics file output (<code class="highlighter-rouge">.PS</code> or <code class="highlighter-rouge">.PNG</code> format) upon exiting from an active plot can be activated via the no. 7 toggle; this can be accompanied by a text file (<code class="highlighter-rouge">.TXT</code>) output of the corresponding intensity table if activated int <code class="highlighter-rouge">.PAR</code> file. In each case the existence of former output files is tested and a counter is incremented in order not to overwrite them; the <code class="highlighter-rouge">.TXT</code> file numbering follows the graphics one without test. The <code class="highlighter-rouge">.LOG</code> files keeping a brief history record are opened on a daily basis, their filenames contain the respective date.</p>
+
+<p>NOTE:
+  It is unavoidable that the resulting <code class="highlighter-rouge">S(Q)</code> and <code class="highlighter-rouge">S(Q,ω)</code> maps contain apparent “noise”, which in fact is a grainy structure going back to coherent imaging (speckles) of the microscopic (atom) structure of the MD model systems. This can be handled symptomatically by the built-in speckle filter (cf. <code class="highlighter-rouge">S_TRIG</code> in the <code class="highlighter-rouge">.PAR</code> file) or by any available image postprocessing tools. It should be kept in mind that the application of any smoothing and noise filtering techniques can generate artefacts and that their results are always accompanied by some loss of detail in the image.</p>
+
+<p>On the other hand the grainy structure of the bitmap colorplots can get further amplified by the rudimentary bit sampling technique implemented in the <code class="highlighter-rouge">PGPLOT</code> library. Therefore whenever an appealing output from large supercells providing large pixel densities is the goal, it is preferable to use a large high resolution screen (4k), select a screenplot size as large as possible (p_size parameter among the list under option 10), save the maps in the PNG format or take screenshots and subsequently generate reduced size PDF, PNG or JPEG images by using more sophisticated image viewing software (the MacOS Preview does the job).</p>
+
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

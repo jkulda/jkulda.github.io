@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="MPtools" /></head>
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>MPtools</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">
+			<img src="/public/img/mp_logo_b43h_light.pdf " width=100%>
+    </a>
+	</div>
+
+	<!--
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">MPtools</a>
+	</div>
+-->
+	<p class="lead">neutron and Xray diffuse scattering from distorted lattices</p>
+</div>
+
+	<br>
+
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+    <li class="nav-title">Pages</li>
+	  
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/0_README.html">
+	            	Welcome
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/1_mp_data_doc_154.html">
+	            	Data handling
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/2_mp_lbin_doc_v154.html">
+	            	General ASCII data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/3_mp_dbin_doc_v154.html">
+	            	DLPOLY data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/4_mp_insp_doc_v154.html">
+	            	Binary data check
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/5_mp_pdf_doc_v154.html">
+	            	Pair distribution functions
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/6_mp_dos_doc_v154.html">
+	            	Vibrational density of states
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/7_mp_sqom_doc_154.html">
+	            	Scattering function maps
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_install_v154.html">
+	            	Download and install
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_use_v154.html">
+	            	Get started
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/9_mp_tools_about.html">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+	
+</div>
+
+
+<div class="sidebar-item sidebar-footer">
+  <br>
+  <br>
+	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+  <br>
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header home">
+		<div class="post-title"> 
+			DLPOLY data input
+		</div>
+	</header>
+
+	<div class="post-content">
+		<p>The <code class="highlighter-rouge">MP_DBIN</code> tool converts molecular dynamics (MD) trajectory data files saved in the <code class="highlighter-rouge">DL_POLY</code> data format (ASCII, single- or multiple-snapshot) to the unique <code class="highlighter-rouge">MPtools</code> binary form. Contrary to the <code class="highlighter-rouge">LAMMPS</code> and <code class="highlighter-rouge">GENERAL</code> data types (cf. <code class="highlighter-rouge">MP_LBIN_DOC</code>) the <code class="highlighter-rouge">DL_POLY</code> data follow a strict model with a typical snapshot header</p>
+
+<blockquote>
+  <p>timestep      750125      552960           1           3  3.99999990E-04   270.04999  <br />
+        194.2110000000        0.0000000000        0.0000000000 <br />
+          0.0000000000      194.2110000000        0.0000000000<br />
+          0.0000000000        0.0000000000      194.2110000000</p>
+</blockquote>
+
+<p>containing:</p>
+<blockquote>
+  <p>timestep      MD simulation type<br />
+  750125        number of steps since start of simulation<br />
+  552960        number of atoms (eg. 5 at/cell, no of cells 48^3 = 110592)<br />
+  1             trajectory recording mode (1 = positions &amp; velocities)<br />
+  3             boundary conditions (3 = parallelepiped)<br />
+  4.0E-04       MD simulation timestep [ps]<br />
+  270.05        time tag of the dump [ps]</p>
+</blockquote>
+
+<p>Consult the related log file in the <code class="highlighter-rouge">EXAMPLES</code> folder for a more detailed idea on how to run this tool.</p>
+
+<p>In general the recommended input method is <code class="highlighter-rouge">CELL</code>. In cases where the one-to-one assignment of atoms to lattice positions in unit cells is impossible or unreliable the dump data can be read in the <code class="highlighter-rouge">BULK</code> mode. More details on the input methods are given on the <a href="1_mp_data_doc_v154.html">data handling</a> page.<br />
+<br /></p>
+
+<p>In <code class="highlighter-rouge">DL_POLY</code> there is no analogy to the <code class="highlighter-rouge">TYPE</code> key of <code class="highlighter-rouge">LAMMPS</code>, hence already when setting up the MD simulation it is advisable to assign specific names (eg. O1,O2 …) to atoms in special positions in the unit cell. In such a case one can set <code class="highlighter-rouge">J_BASIS=1</code> so that <code class="highlighter-rouge">MP_DBIN</code> does not need to attempt the atom identification by position, as would be the case for <code class="highlighter-rouge">J_BASIS=0</code>.<br />
+<br /></p>
+
+<p>NOTE:
+it is important to define correctly the sign of the basis vectors in the <code class="highlighter-rouge">.PAR</code> file. As <code class="highlighter-rouge">DL_POLY</code> dumps the simulation box by atom types, it may not be an easy task to check this by inspecting the huge ASCII snapshot file, which at its beginning contains thousands of lines related to the atom sitting at the origin of the unit cell. A quick help is the UNIX/LINUX <code class="highlighter-rouge">tail</code> command , which will display the last 10 lines (or any other specified number) of the trajectory file with atoms in a non trivial position.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

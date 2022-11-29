@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="MPtools" /></head>
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>MPtools</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">
+			<img src="/public/img/mp_logo_b43h_light.pdf " width=100%>
+    </a>
+	</div>
+
+	<!--
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">MPtools</a>
+	</div>
+-->
+	<p class="lead">neutron and Xray diffuse scattering from distorted lattices</p>
+</div>
+
+	<br>
+
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+    <li class="nav-title">Pages</li>
+	  
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/0_README.html">
+	            	Welcome
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/1_mp_data_doc_154.html">
+	            	Data handling
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/2_mp_lbin_doc_v154.html">
+	            	General ASCII data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/3_mp_dbin_doc_v154.html">
+	            	DLPOLY data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/4_mp_insp_doc_v154.html">
+	            	Binary data check
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/5_mp_pdf_doc_v154.html">
+	            	Pair distribution functions
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/6_mp_dos_doc_v154.html">
+	            	Vibrational density of states
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/7_mp_sqom_doc_154.html">
+	            	Scattering function maps
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_install_v154.html">
+	            	Download and install
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_use_v154.html">
+	            	Get started
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/9_mp_tools_about.html">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+	
+</div>
+
+
+<div class="sidebar-item sidebar-footer">
+  <br>
+  <br>
+	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+  <br>
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header home">
+		<div class="post-title"> 
+			Binary data check
+		</div>
+	</header>
+
+	<div class="post-content">
+		<p>The <code class="highlighter-rouge">MP_INSP</code> tool is a simple utility providing access to the contents of binary data files used by other <code class="highlighter-rouge">MPtools</code>. This option is particularly valuable in any case of doubt. Deliberately, this tool does not provide any means of editing the contents of the binary files.</p>
+
+<p>Upon its invocation <code class="highlighter-rouge">MP_INSP</code> displays essential elements of the file header, including the simulation type, time step, unit cell parameters and atom info.</p>
+
+<blockquote>
+  <p>Code &amp; version, no. of header lines:   MP_TOOLS        1.54           3<br />
+   Substance name:                        BZOb<br />
+   Data &amp; simulation type, input method:  DL_POLY           TIMESTEP          CELL<br />
+   Time structure t_ms,t_dump:            3.99999990E-04   64.0400009<br />
+   Supercell &amp; temperature                32          32          32   198.984192<br />
+   Unit cell parameter(3), angle(3):      4.19393730       4.19393730       4.19393730       90.0000000       90.0000000       90.0000000<br />
+   Atom numbers:                          5       32768       32768       32768       32768       32768      163840<br />
+   Atoms &amp; occupancies:                 Ba  Zr  O1  O2  O3     1.00000000       1.00000000       1.00000000       1.00000000       1.00000000</p>
+</blockquote>
+
+<p>After then the user is prompted to indicate the indices of an atom to be enquired.
+For the <code class="highlighter-rouge">CELL</code> data type the atoms are specified by their atom_type number and the 3 cell indices.</p>
+
+<p>The following example corresponds to data of a cubic perovskite BaZrO<sub>3</sub>, imported by the <code class="highlighter-rouge">CELL</code> method, Displaying the 1st (Ba) and 5th (O3) atoms of the 1st cell of the simulation box (indices 1 1 1)</p>
+
+<blockquote>
+  <p>jat, j_pos,j_row,j_layer (0 0 0 0 = new file number, 9 9 9 9 = END):  1 1 1 1<br />
+   Ba               1   124.320000       5.61999989<br />
+   Cell index       1           1           1<br />
+   Atom position   -16.0303669      -16.0000095      -16.0043278<br />
+   Atom velocity    1.99678099      0.213972330      -2.74756885<br />
+   Atom force       4713.75977       3077.75708       3986.38721</p>
+
+  <p><br />
+   jat, j_pos,j_row,j_layer (0 0 0 0 = new file number, 9 9 9 9 = END):  5 1 1 1<br />
+   O3               5   14.4994001      0.910000026<br />
+   Cell index       1           1           1<br />
+   Atom position   -15.5447092      -16.0293999      -15.4981203<br />
+   Atom velocity    0.315082103       2.82844400      -2.36962032<br />
+   Atom force       562.252625       10687.8594       802.752136</p>
+</blockquote>
+
+<p>For data imported by the <code class="highlighter-rouge">BULK</code> method the atoms are only identified by their label (chemical species) or identification number and by their input sequence index. In the following example, corresponding again to an ABO<sub>3</sub> cubic perovskite system, but now with mixed occupancy on the A-site. Here the <code class="highlighter-rouge">N_TOT</code> occupancies indicate the fraction of the given species in the total number of atoms in the system.</p>
+
+<blockquote>
+  <p>Code &amp; version, no. of header lines:   MP_TOOLS        1.54           3<br />
+   Substance name:                        PT13ST05<br />
+   Data &amp; simulation type, input method:  GENERAL           STATIC            BULK<br />
+   Time structure t_ms,t_dump:            0.00000000       4.59065377E-41  <br />
+   Supercell &amp; temperature:               128         128          18   300.000000<br />
+   Unit cell parameter(3), angle(3):      1.00000000       1.00000000       1.00000000       90.0000000       90.0000000       90.0000000<br />
+   Atom numbers:                          6      212992       81920      294912      212992      376832      294912     1474560<br />
+   Atoms &amp; occupancies:                   Pb  Sr  Ti  O1  O2  O3<br />
+                               0.144444451       5.55555560E-02  0.200000003      0.144444451      0.255555570      0.200000003</p>
+</blockquote>
+
+<p>Now the atoms are specified only by two indices, the atom type and the index in the input sequence. The example below displays information on the 1st atoms of the Pb (1) and Sr (2) sequences occupying the same unit cell position in different cells/layers.</p>
+
+<blockquote>
+  <p>jat, relative record_index (0 = new file number, -1 = END):  1 1<br />
+   Atom, type, mass, charge    Pb           1   0.00000000       0.00000000  <br />
+   Atom index                  1  <br />
+   Atom position              -63.5042915      -63.4850883      -8.48397636</p>
+
+  <p><br />
+   jat, relative record_index (0 = new file number, -1 = END)  2 1<br />
+   Atom, type, mass, charge    Sr             2   0.00000000       0.00000000  <br />
+   Atom index                  491521<br />
+   Atom position              -63.5036545      -63.4910278      -2.48239422</p>
+
+  <p><br />
+   jat, relative record_index (0 = new file number, -1 = END):  6 1<br />
+   Atom, type, mass, charge    O3             6   0.00000000       0.00000000<br />
+   Atom index                  5<br />
+   Atom position               63.9949722      -63.9775887      -8.57444000</p>
+
+</blockquote>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

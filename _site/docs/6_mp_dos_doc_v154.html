@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="MPtools" /></head>
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>MPtools</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">
+			<img src="/public/img/mp_logo_b43h_light.pdf " width=100%>
+    </a>
+	</div>
+
+	<!--
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">MPtools</a>
+	</div>
+-->
+	<p class="lead">neutron and Xray diffuse scattering from distorted lattices</p>
+</div>
+
+	<br>
+
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+    <li class="nav-title">Pages</li>
+	  
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/0_README.html">
+	            	Welcome
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/1_mp_data_doc_154.html">
+	            	Data handling
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/2_mp_lbin_doc_v154.html">
+	            	General ASCII data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/3_mp_dbin_doc_v154.html">
+	            	DLPOLY data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/4_mp_insp_doc_v154.html">
+	            	Binary data check
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/5_mp_pdf_doc_v154.html">
+	            	Pair distribution functions
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/6_mp_dos_doc_v154.html">
+	            	Vibrational density of states
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/7_mp_sqom_doc_154.html">
+	            	Scattering function maps
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_install_v154.html">
+	            	Download and install
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_use_v154.html">
+	            	Get started
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/9_mp_tools_about.html">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+	
+</div>
+
+
+<div class="sidebar-item sidebar-footer">
+  <br>
+  <br>
+	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+  <br>
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header home">
+		<div class="post-title"> 
+			Vibrational density of states
+		</div>
+	</header>
+
+	<div class="post-content">
+		<p>The total phonon DOS is an incoherent sum of contributions of individual atoms forming the system under study and is related by the time-frequency FT to its spherically integrated (averaged) inelastic scattering cross-section. For this reason it is often put into connection with incoherent neutron scattering, but this property applies indifferently even to a perfectly coherent scatterer. The <code class="highlighter-rouge">MP_DOS</code> tool calculates the vibrational (phonon) density of states (DOS) by Fourier transform (using FFT) of the velocity-velocity autocorrelation functions of individual atoms.<br />
+<br />
+On input data acquired by either of the input methods, <code class="highlighter-rouge">CELL</code> and <code class="highlighter-rouge">BULK</code>, are eligible.<br />
+<br />
+The outcome of this program critically depends on adequate time structure of input data, which on its turn depends on the right choice of the MD simulation strategy (particularly concerning the trajectory length and the dump frequency). The time- to frequency-domain FT calls for a contiguous snapshot sequence. As follows from the FT properties the maximum accessible frequency is related the reciprocal value of the MD trajectory time step, it should be kept in mind that only half of the apparent range is really effective (the other half is a mirror image of the first one). In case of an insufficient frequency range (time step too large) the <code class="highlighter-rouge">S(ω)</code> function will fold over and may bring up unexpected artefacts. The frequency resolution is related to the reciprocal of the MD simulation duration, the technicalities of the implemented FT algorithm (use of a window function to damp truncation effects) reduce the effective resolution to twice the reciprocal value of the trajectory length.<br />
+<br />
+The resulting DOS can be displayed either with the neutron scattering weights (squared, b<sub>coh</sub><sup>2</sup>, for comparison with neutron data) or with unit weights (for comparison with other theoretical model results). It should be stressed that there is no way to convert the output DOS from one weighting system to the other one at a later stage. The total DOS is plotted together with selected partials, file output (<code class="highlighter-rouge">.PS</code> and <code class="highlighter-rouge">.TXT</code>) as specified in the dialogue.<br />
+<br />
+NOTE: in most cases the phonon DOS does not exhibit details of energy dependence as sharp as the Q-resolved <code class="highlighter-rouge">S(Q,ω)</code> scattering functions. As a consequence MD trajectories of a few hundred snapshots may prove sufficient to obtain useful information. For typical substances with optic phonon frequencies not extending beyond 25THz (≈ 100meV) a snapshot sequence with a 0.02ps time step (time tag difference between two subsequent snapshots) and 10ps total length (500 snapshots) will produce a DOS plot with a step of 0.1THz and an effective resolution (FWHM) of 0.2 THz providing a first insight into the dynamics of the simulated system.</p>
+
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

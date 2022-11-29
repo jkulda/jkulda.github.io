@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="MPtools" /></head>
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>MPtools</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">
+			<img src="/public/img/mp_logo_b43h_light.pdf " width=100%>
+    </a>
+	</div>
+
+	<!--
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">MPtools</a>
+	</div>
+-->
+	<p class="lead">neutron and Xray diffuse scattering from distorted lattices</p>
+</div>
+
+	<br>
+
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+    <li class="nav-title">Pages</li>
+	  
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/0_README.html">
+	            	Welcome
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/1_mp_data_doc_154.html">
+	            	Data handling
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/2_mp_lbin_doc_v154.html">
+	            	General ASCII data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/3_mp_dbin_doc_v154.html">
+	            	DLPOLY data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/4_mp_insp_doc_v154.html">
+	            	Binary data check
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/5_mp_pdf_doc_v154.html">
+	            	Pair distribution functions
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/6_mp_dos_doc_v154.html">
+	            	Vibrational density of states
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/7_mp_sqom_doc_154.html">
+	            	Scattering function maps
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_install_v154.html">
+	            	Download and install
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_use_v154.html">
+	            	Get started
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/9_mp_tools_about.html">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+	
+</div>
+
+
+<div class="sidebar-item sidebar-footer">
+  <br>
+  <br>
+	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+  <br>
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header home">
+		<div class="post-title"> 
+			Get started
+		</div>
+	</header>
+
+	<div class="post-content">
+		<h4 id="1-preparing-to-use-mptools">1/ PREPARING TO USE <code class="highlighter-rouge">MPtools</code></h4>
+
+<p>Copy the <code class="highlighter-rouge">Examples</code> subdirectory to a convenient place in your working space. 
+Using any of its specific subdirectories as a template, create your own project directory, 
+go there and create the <code class="highlighter-rouge">./data</code> subdirectory, something like</p>
+
+<blockquote>
+  <p>mkdir my_project<br />
+  cd ./my_project<br />
+  mkdir data</p>
+</blockquote>
+
+<p>Move the ACCII input (MD dump files and/or trajectory files) of your project there</p>
+
+<blockquote>
+  <p>mv /volumes/whatever_somewhere/hist_200.txt ./data</p>
+</blockquote>
+
+<p>or just make a link and place it into <code class="highlighter-rouge">./data</code></p>
+
+<blockquote>
+  <p>link /volumes/whats_ever/hist_200.txt ./data/hist_200.txt</p>
+</blockquote>
+
+<p>A good idea is to give intuitive names to all what follows,
+eg. <code class="highlighter-rouge">BZO200s</code> for a BZO (BaZrO<sub>3</sub>) short sequence at 200K</p>
+
+<blockquote>
+  <p>mv ./data/hist_200.txt ./data/BZO200s_200.txt</p>
+</blockquote>
+
+<p>use the upper and lower case according to your system conventions and to your convenience;  on many systems all the <code class="highlighter-rouge">MPtools</code> input specifications will be case-insensitive.</p>
+
+<p>In your project directory create a <code class="highlighter-rouge">&lt;your_project&gt;.par</code> file (use the same name as above, 
+i.e. <code class="highlighter-rouge">BZO200s.par</code>, for convenience, but not obligatorily). This file will contain info about your substance and option settings for some of the <code class="highlighter-rouge">MPtools</code> programs. Use the file <code class="highlighter-rouge">BZO200e.par</code> as a template.</p>
+
+<p>The namelist names like <code class="highlighter-rouge">&amp;mp_bin</code>, <code class="highlighter-rouge">&amp;mp_pdf</code> etc. as well as the names of the variables are in fact <code class="highlighter-rouge">FORTRAN</code> identifiers - do not touch them! Each name list has to be terminated by a slash (<code class="highlighter-rouge">/</code>). When editing the contents mind to use spaces rather than tabs. Empty lines as well as any text beyond a 1st exclammation mark on a line is a comment, ignored in input. You cannot add anything to the name lists unless modifying the code itself, on the other hand non-relevant items may be omitted in the <code class="highlighter-rouge">.PAR</code> file.</p>
+
+<h4 id="2-using-mptools">2/ USING <code class="highlighter-rouge">MPtools</code></h4>
+
+<p>Each routine offers a more-or-less intuitive command line dialog (cf. more detailed 
+descriptions under <code class="highlighter-rouge">mp_tools_code/docs</code></p>
+
+<h5 id="a-convert-the-input-ascii-file-data-produced-by-dl_poly-lammps-discus-etc-into-binary-form-as-a-first-obligatory-step">A/ Convert the input ASCII file data produced by <code class="highlighter-rouge">DL_POLY</code>, <code class="highlighter-rouge">LAMMPS</code>, <code class="highlighter-rouge">DISCUS</code> etc. into binary form (as a first, obligatory step)</h5>
+
+<ul>
+  <li><code class="highlighter-rouge">MP_DBIN</code> (for <code class="highlighter-rouge">DL_POLY</code> data) or <code class="highlighter-rouge">MP_LBIN</code> (for <code class="highlighter-rouge">LAMMPS</code>, <code class="highlighter-rouge">GENERAL</code> data) tools generate the binary direct access files to be used in subsequent work; each of the files will start by a header record containing all the info from history file header (atom names, masses, lattice parameters etc.), the binary files will be stored in <code class="highlighter-rouge">./data</code> again; if pertinent, the programs determine real temperature from the kinetic energies of individual velocity components (separately for cores and shells) and refine corrections to the lattice parameters originally deduced from the supercell dimensions; a detailed output is produced for the first snapshot in the series automatically and can be extended to all of them by setting a switch in the <code class="highlighter-rouge">.PAR</code> file</li>
+</ul>
+
+<p>For series of snapshots the binary file names consist of a ‘master’ (a character chain 
+specified in the <code class="highlighter-rouge">MP_*BIN</code> dialogue) followed by ‘_n’ and a four digit number, eg. <code class="highlighter-rouge">BZO200_n0001.dat</code>; the other tools will ask later for this information in their input dialogues.</p>
+
+<h5 id="b-inspect-the-contents-of-the-binary-data-files">B/ Inspect the contents of the binary data files</h5>
+
+<ul>
+  <li><code class="highlighter-rouge">MP_INSP</code> prints the contents of the header record of a binary data file and displays  information on individual atoms identified by their supercell (<code class="highlighter-rouge">CELL</code>) or input sequence (<code class="highlighter-rouge">BULK</code>) indices.</li>
+</ul>
+
+<h5 id="c-visualise-scattering-functions-and-extract-other-related-properties">C/ Visualise scattering functions and extract other related properties</h5>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">MP_PDF</code> accumulates and plots pair distribution functions (PDF) in direct space by Monte-Carlo sampling; use <code class="highlighter-rouge">OpenMP</code> parallelisation if computation speed is of importance; for high accuracy and 100% reproducibility the single process option should be checked</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">MP_DOS</code> calculates and plots the vibrational density of states; atom weights can be chosen between uniform (1.) and neutron (b<sub>coh</sub>, read from the <code class="highlighter-rouge">.PAR</code> file) with the possibility to mask out any of the atom types</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">MP_SQOM</code> produces total, elastic and inelastic diffuse scattering intensity 
+  maps over planes in reciprocal space as well as <code class="highlighter-rouge">E(Q)</code> cuts (dispersion-like) with the possibility to save both tables of intensities in ASCII format (<code class="highlighter-rouge">.TXT</code>) and the graphical output in the <code class="highlighter-rouge">.PS</code> or <code class="highlighter-rouge">.PNG</code> format; the use of non-uniform fast Fourier transform (NUFFT) to pass from the direct to the reciprocal (momentum) space brings the usual computing time gain of <code class="highlighter-rouge">≈ NlogN</code> against the <code class="highlighter-rouge">N^2</code> scale for normal FT, which can reach many orders of magnitude for large systems; in addition, the use of <code class="highlighter-rouge">OpenMP</code> parallelisation can be activated and is recommended in general (no reproducibility issues to be expected)</p>
+  </li>
+</ul>
+
+<h4 id="3-examples">3/ EXAMPLES</h4>
+
+<p>The examples in the <code class="highlighter-rouge">Examples</code> directory cover the two available ASCII data input methods, <code class="highlighter-rouge">CELL</code> and <code class="highlighter-rouge">BULK</code>, and take as examples data generated by <code class="highlighter-rouge">DL_POLY</code>, <code class="highlighter-rouge">LAMMPS</code> and <code class="highlighter-rouge">FERODO</code> (phasefield simulation package).</p>
+
+<p>To keep the distribution size reasonable, the data sets extend only over a single or a few snapshots, permitting to test the basic functions of <code class="highlighter-rouge">MPtools</code>: conversion to binary format, inspection of the binary data, plots of total scattering intensities and generation of a PDF. The energy-resolved functionalities calling for sequences of hundreds to thousands snapshots (10-100 Gb) need to be tried in ‘real life’ circumstances.</p>
+
+<p>The text files like <code class="highlighter-rouge">lammps_cu_48.txt</code> containing command line session logs, included in each case, give an idea of what could be a brief tutorial session and give also the possibility to cross-check the details of data file structure. The included <code class="highlighter-rouge">.PAR</code> files can be used as templates for own projects.</p>
+
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

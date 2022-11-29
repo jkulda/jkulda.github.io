@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="MPtools" /></head>
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>MPtools</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">
+			<img src="/public/img/mp_logo_b43h_light.pdf " width=100%>
+    </a>
+	</div>
+
+	<!--
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">MPtools</a>
+	</div>
+-->
+	<p class="lead">neutron and Xray diffuse scattering from distorted lattices</p>
+</div>
+
+	<br>
+
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+    <li class="nav-title">Pages</li>
+	  
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/0_README.html">
+	            	Welcome
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/1_mp_data_doc_154.html">
+	            	Data handling
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/2_mp_lbin_doc_v154.html">
+	            	General ASCII data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/3_mp_dbin_doc_v154.html">
+	            	DLPOLY data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/4_mp_insp_doc_v154.html">
+	            	Binary data check
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/5_mp_pdf_doc_v154.html">
+	            	Pair distribution functions
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/6_mp_dos_doc_v154.html">
+	            	Vibrational density of states
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/7_mp_sqom_doc_154.html">
+	            	Scattering function maps
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_install_v154.html">
+	            	Download and install
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_use_v154.html">
+	            	Get started
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/9_mp_tools_about.html">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+	
+</div>
+
+
+<div class="sidebar-item sidebar-footer">
+  <br>
+  <br>
+	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+  <br>
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header home">
+		<div class="post-title"> 
+			Download and install
+		</div>
+	</header>
+
+	<div class="post-content">
+		<p><code class="highlighter-rouge">MPtools</code> is a free software package available for public use, redistribution and further modification subject to the terms of the <a href="https://www.gnu.org/licenses/">GNU GPL v3</a> license.</p>
+
+<h4 id="1-hardware-and-software-requirements">1/ Hardware and software requirements</h4>
+
+<p><code class="highlighter-rouge">MPtools</code> are written in Fortran making extensive use of F95 features (pointers, dynamical array allocation, vector operations), as a result there is no hard limit on the treated data size. All depends on the installed memory and on operation system’s flexibility in managing it. 
+<br />
+The code has been tested to work from command-line interface on the <code class="highlighter-rouge">Ubuntu</code> (linux) and <code class="highlighter-rouge">Mac OS X Darwin</code> (unix) systems. In principle, with adequate compiler and environment settings, the same should be true for <code class="highlighter-rouge">Windows</code> systems.<br />
+<br />
+Hardware requirements:</p>
+<ul>
+  <li>
+    <p>a middle-class notebook with an <code class="highlighter-rouge">INTEL I5_CORE2</code> processor (or equivalent) and 8Gb memory is sufficient for static models with &lt; 10<sup>6</sup> atoms (cf. <code class="highlighter-rouge">Examples</code> and projects of analogous size) (the time tags in the <code class="highlighter-rouge">Examples</code> logfiles correspond to such a configuration)</p>
+  </li>
+  <li>
+    <p>internal memory of 16Gb is a rock bottom minimum to explore larger static supercells
+(10<sup>7</sup> atoms and more) and/or lattice dynamics with modest sequences of 10<sup>2</sup>-10<sup>3</sup> frames; a workstation with 10-20 cores and 64-128Gb memory will bring comfort and boost overall efficiency to address more ambitious projects</p>
+  </li>
+</ul>
+
+<p>Software requirements (all within the reach of standard link and execution pathes):</p>
+<ul>
+  <li>
+    <p><a href="https://gcc.gnu.org">GNU GCC</a> suite including GFORTRAN</p>
+  </li>
+  <li>
+    <p><a href="http://fftw.org/">FFTW</a> (Fastest Fourier Transform in the West) libraries</p>
+  </li>
+  <li>
+    <p><a href="https://www.openmp.org">OpenMP</a> code paralellisation libraries</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/flatironinstitute/finufft">FINUFFT</a> Flatiron Institute non-uniform FFT library</p>
+  </li>
+  <li>
+    <p><a href="http://www.astro.caltech.edu/~tjp/pgplot/">PGPLOT</a> libraries installed in their
+standard location <code class="highlighter-rouge">/usr/local/pgplot</code>; you may wish to implement the patched <code class="highlighter-rouge">.PNG</code> driver attached to the present distribution (useful for bitmap output)</p>
+  </li>
+  <li>
+    <p>the <code class="highlighter-rouge">Xquartz</code> (X11 emulation) and <code class="highlighter-rouge">Xcode Command Line Tools</code> applications in case of the Mac <code class="highlighter-rouge">OS X</code> systems</p>
+  </li>
+</ul>
+
+<h4 id="2-download-mptools">2/ Download <code class="highlighter-rouge">MPtools</code></h4>
+
+<p>The most practical way to obtain the latest version of <code class="highlighter-rouge">MPtools</code> is to <a href="https://github.com/jkulda/MPtools/archive/refs/heads/master.zip">download</a> it from the Github <a href="https://github.com/jkulda/MPtools">MPtools</a> repository. Alternatively, you may <code class="highlighter-rouge">git clone</code> it directly from the command line</p>
+<blockquote>
+  <p>git clone https://github.com/jkulda/MPtools</p>
+</blockquote>
+
+<h4 id="3-compile-and-install-mptools">3/ Compile and install <code class="highlighter-rouge">MPtools</code></h4>
+
+<p>To install <code class="highlighter-rouge">MPtools</code> in the unix and linux environments (you may need the <code class="highlighter-rouge">sudo</code> privileges):</p>
+<ul>
+  <li>copy the distribution archive into a suitable location (outside the <code class="highlighter-rouge">/usr/local</code> tree) and uncompress it</li>
+  <li>
+    <p>set the resulting <code class="highlighter-rouge">&lt;whatever_path&gt;/MPtools/code</code> as your current directory</p>
+  </li>
+  <li>create a <code class="highlighter-rouge">/usr/local/mp_tools</code> directory (and get privileges to access it)</li>
+  <li>check that the <code class="highlighter-rouge">/usr/local/bin</code> directory exists, otherwise create it and include it 
+into your execution path</li>
+  <li>execute the installation script by <code class="highlighter-rouge">source compile_mp_154.txt</code>; feel free to edit the
+script according to whether you prefer to overwrite the binaries of a possible previous version or not</li>
+  <li>in case of need (segmentation faults) add the <code class="highlighter-rouge">-fbounds-check</code> option to the compiler 
+calls to help localise the fault origins; similarly, in case of stable operation feel free to attempt more aggressive code optimisation by replacing the <code class="highlighter-rouge">-O</code> option by <code class="highlighter-rouge">-O3</code> and by adding <code class="highlighter-rouge">-march=native</code> (or any specific architecture indentifier, cf. the GCC documentation)</li>
+</ul>
+
+<p>For the moment there is no <code class="highlighter-rouge">makefile</code> as the <code class="highlighter-rouge">MPtools</code> are a suite of relatively short standalone code segments; in case of modifications they can be recompiled individually copying just a single line from the compiling script to the command line. The executables will be automatically placed into <code class="highlighter-rouge">/usr/local/bin</code>, which is normally part of the execution path.<br />
+<br />
+Check the <a href="/docs/8_mp_tools_use_v154.html">Getting started</a> section on how to start using <code class="highlighter-rouge">MPtools</code>.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

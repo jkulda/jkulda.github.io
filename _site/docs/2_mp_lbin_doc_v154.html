@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="MPtools" /></head>
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>MPtools</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">
+			<img src="/public/img/mp_logo_b43h_light.pdf " width=100%>
+    </a>
+	</div>
+
+	<!--
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">MPtools</a>
+	</div>
+-->
+	<p class="lead">neutron and Xray diffuse scattering from distorted lattices</p>
+</div>
+
+	<br>
+
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+    <li class="nav-title">Pages</li>
+	  
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/0_README.html">
+	            	Welcome
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/1_mp_data_doc_154.html">
+	            	Data handling
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/2_mp_lbin_doc_v154.html">
+	            	General ASCII data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/3_mp_dbin_doc_v154.html">
+	            	DLPOLY data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/4_mp_insp_doc_v154.html">
+	            	Binary data check
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/5_mp_pdf_doc_v154.html">
+	            	Pair distribution functions
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/6_mp_dos_doc_v154.html">
+	            	Vibrational density of states
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/7_mp_sqom_doc_154.html">
+	            	Scattering function maps
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_install_v154.html">
+	            	Download and install
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/8_mp_tools_use_v154.html">
+	            	Get started
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/docs/9_mp_tools_about.html">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+	
+</div>
+
+
+<div class="sidebar-item sidebar-footer">
+  <br>
+  <br>
+	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+  <br>
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header home">
+		<div class="post-title"> 
+			General ASCII data input
+		</div>
+	</header>
+
+	<div class="post-content">
+		<p>The <code class="highlighter-rouge">MP_LBIN</code> tool converts a wide spectrum of ASCCI data types identified in the <code class="highlighter-rouge">.PAR</code> file as <code class="highlighter-rouge">LAMMPS</code> or <code class="highlighter-rouge">GENERAL</code> (with the option of a more specific label). Their common denominator is that after the file header (length to be indicated in the <code class="highlighter-rouge">.PAR</code> file) there follow position data in the form of 1 single line (record) per atom. The list and exact positions of the data items to be read from each line (record) are are parsed from the <code class="highlighter-rouge">REC_STR</code> string specified in the <code class="highlighter-rouge">.PAR</code> file.</p>
+
+<h4 id="1-general-aspects">1/ GENERAL ASPECTS</h4>
+
+<p>Before going into the details of the input methods described below, please read carefully the general introduction to <a href="1_mp_data_doc_v154.html">data handling</a>.</p>
+
+<p>The LAMMPS dump data are expected to come as a succession of numbered (filename extension) snapshot files. In this case <code class="highlighter-rouge">MP_LBIN</code> will decode their header contents, reducing (but not eliminating) the need of additional information from the <code class="highlighter-rouge">.PAR</code> file.</p>
+
+<p>Otherwise <code class="highlighter-rouge">MP_LBIN</code> can read a contiguous succession of numbered snapshot files, a concatenated trajectory, containing all snapshots in a single file, or a combination of both. The corresponding information is specified in the <code class="highlighter-rouge">.PAR</code> file and in the input dialogue. It is the user’s responsibility to transfer carefully all the pertinent information (available in the data file header or elsewhere) into the corresponding fields in the <code class="highlighter-rouge">.PAR</code> file manually.</p>
+
+<p>Consult the related log file in the <code class="highlighter-rouge">EXAMPLES</code> folder for a more detailed idea on how to run this tool.</p>
+
+<h4 id="2-common-features">2/ COMMON FEATURES</h4>
+
+<p>The data records may contain information identifying individual atoms (<code class="highlighter-rouge">ID</code>, <code class="highlighter-rouge">TYPE</code>, <code class="highlighter-rouge">ELEMENT</code>) or may rely on the order and number of records, containing just (eg.) the position data.</p>
+
+<p>In the latter case all the atoms in the simulation box of a given type are listed before passing to next atom type. The order of atoms must correspond exactly to the ATOMS list in <code class="highlighter-rouge">.PAR</code></p>
+<blockquote>
+  <p>Mo Mo  .0  .0  .0  24  !chem. element, atom name, position, occupancy</p>
+</blockquote>
+
+<p>the corresponding number of records (24 in this example) must be specified in the <code class="highlighter-rouge">OCCUPANCY</code> field of the list (just following the fractional coordinates).</p>
+
+<p>The ASCII record structure is parsed from a string (case-insensitive) contained either in the <code class="highlighter-rouge">.PAR</code> file for the <code class="highlighter-rouge">GENERAL</code> data type (<code class="highlighter-rouge">REC_STR</code> in section <code class="highlighter-rouge">&amp;MP_BIN</code>)</p>
+
+<blockquote>
+  <p>REC_STR = ‘id type element mass x y z vx vy vz’</p>
+</blockquote>
+
+<p>or in the file header for the LAMMPS data type (ITEM: ATOMS, cf. below), in both cases corresponding to input record structures like</p>
+
+<blockquote>
+  <p>1 1 Cu1 63.55 0.00919 -0.368474 -0.425633 0.47397 -0.215569 4.752<br />
+  2 2 Cu2 63.55 1.51811 1.4525 -0.425971 -1.96235 -3.07269 1.73004</p>
+</blockquote>
+
+<p>At present the following variables (based on the LAMMPS syntax) are recognised:</p>
+<blockquote>
+ 	ID          atom ID<br />
+ 	TYPE        atom type<br />
+ 	ELEMENT     atom name (as defined eg. in LAMMPS by the DUMP_MODIFY directive)<br />
+ 	MASS        atom mass<br />
+ 	X,Y,Z       atom coordinates<br />
+ 	VX,VY,VZ    atom velocities<br />
+ 	FX,FY,FZ    atom forces<br />
+ 	Q           atom charge<br />
+ 	NN          skipped input 
+</blockquote>
+
+<p>and transferred into the binary file. Any other variables present in the dump will be ignored upon reading as dummy fields, for clarity they can be specified by the unique symbol <code class="highlighter-rouge">NN</code>. The specification of all the symbols is case-insensitive. The presence of the keys <code class="highlighter-rouge">X</code>,<code class="highlighter-rouge">Y</code>,<code class="highlighter-rouge">Z</code> is obligatory.</p>
+
+<p>In general the meaning of atom <code class="highlighter-rouge">TYPE</code> is ambiguous (in particular in LAMMPS it is a matter of definition, depending on the way, how the user has constructed the simulation box  and how has defined/modified the dump directive). Therefore it is important to clarify via the <code class="highlighter-rouge">J_BASIS</code> parameter whether it represents the chemical atom species (<code class="highlighter-rouge">J_BASIS=0</code>) or whether it identifies an atom in a specific position in the unit cell (<code class="highlighter-rouge">J_BASIS=1</code>).</p>
+
+<p>In general the recommended input method is <code class="highlighter-rouge">CELL</code>; in cases where the one-to-one assignment of atoms to unit cells is impossible or unreliable the dump data can be read in by means of the <code class="highlighter-rouge">BULK</code> method. More details on the input methods are given in  <code class="highlighter-rouge">MP_DATA_DOC_V154.TXT</code></p>
+
+<h4 id="3-lammps-specific-features">3/ LAMMPS-SPECIFIC FEATURES</h4>
+
+<p>In general the LAMMPS output refers to the time variable in terms of number of timesteps, which appears in the DUMP command as well as in the filename extensions for the individual dump files. The only way to access the timestep length, and hence the real time scale, is to impose by the <code class="highlighter-rouge">DUMP_MODIFY</code> directive the time values to be recorded in the dump file headers (cf. below). If the corresponding tag is absent in the file header, MP_LBIN will ask for the value in its dialogue.</p>
+
+<p>The standard <code class="highlighter-rouge">DUMP</code> directive (within the LAMMPS input file <code class="highlighter-rouge">in.*</code>)	specifies the output style. For the purpose of <code class="highlighter-rouge">MPtools</code> the <code class="highlighter-rouge">ATOM</code> style or its modifications (<code class="highlighter-rouge">CUSTOM</code>) are most relevant. The style defines the output file structure (single snapshots vers. concatenated trajectory) and the contents output records, eg.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">dump 1 all atom 50 ${fil_nam}.*</code></p>
+</blockquote>
+
+<p>or</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">dump 1 all custom 50 ${fil_nam}.* id type element mass x y z vx vy vz</code></p>
+</blockquote>
+
+<p>Here the <code class="highlighter-rouge">${fil_nam}</code> with <code class="highlighter-rouge">.*</code> will create separate files for each snapshot. Alternatively a concatenated output file can be obtained by omitting the <code class="highlighter-rouge">.*</code> characters and adding the directive</p>
+<blockquote>
+  <p>dump_modify 	1 append yes</p>
+</blockquote>
+
+<p>After the output file specification may follow a list of standard variable names, which specifies their order in each atom record. This information is then contained in the <code class="highlighter-rouge">ITEM: ATOMS</code> header line of the snapshot file just preceding the atom records, eg.</p>
+
+<blockquote>
+  <p>ITEM: ATOMS id type element mass x y z vx vy vz</p>
+</blockquote>
+
+<p>Normally, the <code class="highlighter-rouge">Y</code>,<code class="highlighter-rouge">Y</code>,<code class="highlighter-rouge">Z</code> atom positions in the LAMMPS dump files are given in a coordinate system having origin in one of the corners of the simulation box and using the angstrom (Å) as length unit. These coordinates have to be transformed to a system having origin in the centre of the simulation box and to be reduced to the relative lattice units (l.u.). <code class="highlighter-rouge">MP_LBIN</code> derives the lattice parameter from the supercell dimensions and from the corresponding cell dimension numbers.</p>
+
+<h4 id="notes">NOTES:</h4>
+
+<p>1/ when setting up the MD simulation with LAMMPS, it is useful to modify the corresponding DUMP directive in the input file section dealing with the ‘production’ runs , eg.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">dump 1 all custom 50 ${fil_nam}.* id type element mass x y z vx vy vz</code></p>
+</blockquote>
+
+<p>by the following DUMP_MODIFY directives (1 is the number of the directive to be modified)</p>
+
+<blockquote>
+  <p>dump_modify  1 time yes        #the dump time is included in the snapshot header<br />
+   dump_modify  1 pbc yes         #remap atoms via periodic boundary conditions<br />
+   dump_modify  1 sort id         #sort the output according to atom ID<br />
+   dump_modify  1 element Cu1 Cu2 Cu3 Cu4    # atom names related to atom types</p>
+</blockquote>
+
+<p>While the dump time is only important when simulating dynamical processes (S(Q,w) and/or phonon DOS to be extracted), the periodic boundary conditions are an important ingredient for any form of Fourier transform between the direct and reciprocal space.</p>
+
+<p>2/it is crucial to bear in mind that in LAMMPS, whenever it runs under MPI paralelisation, the supercell is ad-hoc separated into blocks attributed to each of the processes. The communication between the blocks operates only from time to time and, unless the contrary is requested explicitly, the dump of the snapshot data occurs in the order of the processes being ready - <strong>hence the output data blocks DO NOT NECESSARILY FOLLOW THE ORDER OF THE SITE INDEXATION!</strong></p>
+
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>
