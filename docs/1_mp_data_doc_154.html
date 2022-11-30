@@ -166,7 +166,7 @@
 <div class="sidebar-item sidebar-footer">
   <br>
   <br>
-	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+	<p>Copyright (C) <a href="mailto:contact@mptools.fr">Jiri Kulda</a></p>
   <br>
 	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
 </div>
@@ -181,7 +181,7 @@
 	</header>
 
 	<div class="post-content">
-		<p>Simulation data come in diverse ASCII formats. <code class="highlighter-rouge">MPtools</code> converts them into a proprietary binary format to speed up and facilitate their further handling. This section describes the main principles of this action, followed by more details in sections devoted to specific conversion tools.</p>
+		<p>Simulation data come in diverse ASCII formats. <code class="highlighter-rouge">MPtools</code> converts them into a proprietary binary format to facilitate their further handling and to standardise the input information. At this initial stage is also created an accompanying <code class="highlighter-rouge">&lt;project_name&gt;.par</code> file (referred to as <code class="highlighter-rouge">.PAR</code> hereafter) with additional information and specific <code class="highlighter-rouge">MPtools</code>settings for each project. The present section describes the main principles of this action, followed by more details in sections devoted to specific conversion tools.</p>
 
 <h4 id="1-simulation-types">1/ SIMULATION TYPES</h4>
 
@@ -195,7 +195,7 @@
 
 <h4 id="2-data-types">2/ DATA TYPES</h4>
 
-<p>At present <code class="highlighter-rouge">MPtools</code> can handle ASCII output data from a vast variety of simulation packages. For historical reasons <code class="highlighter-rouge">DL_POLY</code> and <code class="highlighter-rouge">LAMMPS</code> (MD) are particular cases, for which the file header contents is decoded to provide automatically the accompanying information on auxiliary parameters of the simulation and on the details of the data structure within the two respective input tools <code class="highlighter-rouge">MP_DBIN</code> and <code class="highlighter-rouge">MP_LBIN</code>. In all other cases the user has to fill in the corresponding parameter values into the accompanying <code class="highlighter-rouge">.PAR</code> file (cf. templates in this package) and provide a symbolic description of the data records, which will be parsed by the input code and again the MP_LBIN tool is to be used for the conversion.</p>
+<p>At present <code class="highlighter-rouge">MPtools</code> can handle ASCII output data from a vast variety of simulation packages. For historical reasons <code class="highlighter-rouge">DL_POLY</code> and <code class="highlighter-rouge">LAMMPS</code> (MD) are particular cases, for which the file header contents is decoded to provide automatically the accompanying information on auxiliary parameters of the simulation and on the details of the data structure within the two respective input tools <code class="highlighter-rouge">MP_DBIN</code> and <code class="highlighter-rouge">MP_LBIN</code>. In all other cases the user has to fill in the corresponding parameter values into the accompanying <code class="highlighter-rouge">.PAR</code> file (cf. templates in this package) and provide a symbolic description of the data records, which will be parsed by the input code of the <code class="highlighter-rouge">MP_LBIN</code> tool .</p>
 
 <p>The data type has to be specified by setting</p>
 
@@ -203,13 +203,13 @@
   <p>DAT_TYPE = ‘DL_POLY’</p>
 </blockquote>
 
-<p>Alternative values are <code class="highlighter-rouge">'LAMMPS'</code> and <code class="highlighter-rouge">'GENERAL'</code>, instead of the latter case an arbitrary short string (&lt;16 characters), eg. ‘VASP’, can be supplied to identify the specific case. It will be stored with the binary data for later information, while the input ASCII data will be treated along the <code class="highlighter-rouge">'GENERAL</code>’ scheme.</p>
+<p>Alternative values are <code class="highlighter-rouge">'LAMMPS'</code> and <code class="highlighter-rouge">'GENERAL'</code>, in the latter case an arbitrary string (&lt;16 characters), eg. <code class="highlighter-rouge">'VASP'</code>, can be supplied to identify the specific case. This name will be stored with the binary data for later information and the input ASCII data will be treated along the <code class="highlighter-rouge">'GENERAL'</code> scheme.</p>
 
 <h4 id="3-units-of-measurement">3/ UNITS OF MEASUREMENT</h4>
 
-<p>Intrinsically, <code class="highlighter-rouge">MPtools</code> use the system of ‘atomic’ units (sometimes called DAPS) of Dalton (Da) or gram/mole for mass, Angstrom (Å) for length and picosecond (ps) for time. The energy of excitations is expressed as frequency in THz (the inverse of ps, 1THZ ≈ 4.136 meV).</p>
+<p>Intrinsically, <code class="highlighter-rouge">MPtools</code> use the system of ‘atomic’ units (sometimes called DAPS) of Dalton (Da) or gram/mole for mass, Angstrom (Å) for length and picosecond (ps) for time. The energy of excitations is expressed as frequency in THz (1THZ = 1 ps<sup>-1</sup> ≈ 4.136 meV).</p>
 
-<p>On input, the <code class="highlighter-rouge">DL_POLY</code> data is assumed to have space coordinates in Angstroms and velocities and forces following the DAPS logic. For <code class="highlighter-rouge">LAMMPS</code> the convention is similar (corresponding its the METAL style).</p>
+<p>On input, the <code class="highlighter-rouge">DL_POLY</code> data is assumed to have space coordinates in Angstroms and velocities and forces following the DAPS logic. For <code class="highlighter-rouge">LAMMPS</code> the convention is similar (corresponding its the <code class="highlighter-rouge">METAL</code> style).</p>
 
 <p>In the <code class="highlighter-rouge">GENERAL</code> cases the atom position coordinates may be given either in absolute units (Angstrom), in lattice units (l.u.) or as fractions of the simulation box size (i.e. on the scale 0. to 1.), the corresponding case is to be specified in the <code class="highlighter-rouge">.PAR</code> file by</p>
 
@@ -223,7 +223,7 @@
 
 <p>Each of the two <code class="highlighter-rouge">MPtools</code> data conversion utilities, <code class="highlighter-rouge">MP_DBIN</code> and <code class="highlighter-rouge">MP_LBIN</code>, can use two fundamentally different input methods to interprete the input data: <code class="highlighter-rouge">CELL</code> and <code class="highlighter-rouge">BULK</code>. Common to the two modes is conversion to a coordinate system centred in the middle of the simulation box as required by the subsequent use of the NUFFT library to calculate the lattice sums by non-uniform FFT. The <code class="highlighter-rouge">CELL</code> method will convert coordinates into <code class="highlighter-rouge">LATTICE</code> units (l.u.) and assign each atom to a specific unit cell while the <code class="highlighter-rouge">BULK</code> method may produce coordinates in either <code class="highlighter-rouge">LATTICE</code> or <code class="highlighter-rouge">ANGSTROM</code> units. Here atoms will be just grouped according to their chemical symbol (or another supplied key) without identifying their unit cell (cf. below). This latter method is useful for heavily distorted systems with interstitial atoms and/or coexisting highly disoriented sublattices.</p>
 
-<p>With the <code class="highlighter-rouge">CELL</code> input method the coordinates are converted to the lattice units (l.u.). Each atom is checked against structural information given in the <code class="highlighter-rouge">ATOMS</code> table of the <code class="highlighter-rouge">.PAR</code> file in order to identify its special position in the unit cell and to assign it to the corresponding sublattice. This will make possible to address any single sublattice (e.g. the oxygens at the 0.5 0.5 0 positions in a perovskite crystal) in the course of further analysis. This task is largely facilitated if each atom has already in the input ASCII file its unique symbol (eg. O1 identifying the [.5 .5 0] oxygen in an ABO<sub>3</sub> perovskite) or a numerical key identifying its position in the crystallographic basis (atom type in LAMMPS). In absence of such information the <code class="highlighter-rouge">MP_*BIN</code> code attempts to identify each atom by matching its position against the basis vectors given in the <code class="highlighter-rouge">ATOMS</code> section of the <code class="highlighter-rouge">.PAR</code> file with a tolerance margin given by the <code class="highlighter-rouge">EPS</code> parameter. This procedure is only efficient for relatively small atom displacements (<code class="highlighter-rouge">EPS</code> not exceeding half of the distance between neighbours).</p>
+<p>With the <code class="highlighter-rouge">CELL</code> input method the coordinates are converted to the lattice units (l.u.). Each atom is checked against structural information given in the <code class="highlighter-rouge">ATOMS</code> table of the <code class="highlighter-rouge">.PAR</code> file in order to identify its special position in the unit cell and to assign it to the corresponding sublattice. This will make possible to address any single sublattice individually (e.g. the oxygens at the 0.5 0.5 0 positions in a perovskite crystal) in the course of further analysis. This task is largely facilitated if already in the input ASCII file each atom has its unique symbol (eg. O1 identifying the [.5 .5 0] oxygen in an ABO<sub>3</sub> perovskite) or a numerical key identifying its position in the crystallographic basis (atom <code class="highlighter-rouge">type</code> in LAMMPS). In absence of such information the <code class="highlighter-rouge">MP_*BIN</code> code attempts to identify each atom by matching its position against the basis vectors given in the <code class="highlighter-rouge">ATOMS</code> section of the <code class="highlighter-rouge">.PAR</code> file with a tolerance margin given by the <code class="highlighter-rouge">EPS</code> parameter. This procedure is only efficient for relatively small atom displacements (<code class="highlighter-rouge">EPS</code> not exceeding half of the distance between neighbours).</p>
 
 <p>In the <code class="highlighter-rouge">BULK</code> mode the atom coordinates may be either converted to l.u., if the corresponding dimensions of the simulation box are specified in the <code class="highlighter-rouge">.PAR</code> file, eg. for a box of 32 x 32 x 32 unit cells</p>
 
@@ -237,21 +237,21 @@
   <p>N_ROW = 1  1  1</p>
 </blockquote>
 
-<p>If the input coordinates are given in fractions of the simulation box size, <code class="highlighter-rouge">MP_LBIN</code> may convert them by multiplying them by the simulation box size (in LATTICE or ANGSTROM units) the specification in <code class="highlighter-rouge">.PAR</code>, eg. in ANGSTROM:</p>
+<p>If the input coordinates are given in fractions of the simulation box size, <code class="highlighter-rouge">MP_LBIN</code> may convert them by multiplying them by the simulation box size (in LATTICE or ANGSTROM units) specified in <code class="highlighter-rouge">.PAR</code> (eg. in ANGSTROM):</p>
 
 <blockquote>
   <p>A_CELL_PAR =  12.012030  10.402723 42.498058</p>
 </blockquote>
 
-<p>In any case the <code class="highlighter-rouge">BULK</code> mode reads in the atom data without any attempt to put them into correspondence with a regular lattice. On the output the atoms are classified by their labels, in each class they are indexed in the order of the input. The atom labels have to be exactly reproduced in the <code class="highlighter-rouge">ATOMS</code> section of the <code class="highlighter-rouge">.PAR</code> file. This approach permits to address systems distorted and disordered without any limits, including irregular shapes of the simulation box. On the other hand, in such a case not all functionalities of the <code class="highlighter-rouge">MPtools</code> are available because of the missing information.</p>
+<p>In any case the <code class="highlighter-rouge">BULK</code> mode reads in the atom data without any attempt to put them into correspondence with a regular lattice. On the output the atoms are classified by their labels (chemical species), in each class they are indexed in the order of the input. The atom labels have to be exactly reproduced in the first column of the <code class="highlighter-rouge">ATOMS</code> section of the <code class="highlighter-rouge">.PAR</code> file. This approach permits to address systems distorted and disordered without any limits, including irregular shapes of the simulation box. On the other hand, in such a case not all functionalities of the <code class="highlighter-rouge">MPtools</code> are available because of the missing information.</p>
 
-<p>Further details, specific to the <code class="highlighter-rouge">MP_DBIN</code> (DL_POLY) and <code class="highlighter-rouge">MP_LBIN</code> (LAMMPS, GENERAL) tools are given in separate texts.</p>
+<p>Further details are given in the corresponding sections dealing in detail with the <a href="/docs/2_mp_lbin_doc_v154.html">LAMMPS, GENERAL</a> and <a href="/docs/3_mp_dbin_doc_v154.html">DL_POLY</a> cases.</p>
 
-<h4 id="5-mptools-binary-data-representation">5/ <code class="highlighter-rouge">MPtools</code> BINARY DATA REPRESENTATION</h4>
+<h4 id="5-mptools-binary-data-structure">5/ <code class="highlighter-rouge">MPtools</code> BINARY DATA STRUCTURE</h4>
 
-<p>The output uses a binary direct-access file structure with 1024 byte records (L_REC4 = 256 of 32-bit words), a compromise between I/O speed and the possibility to selectively access individual atom data in the binary files. All the binary data follow a 32-bit word structure.</p>
+<p>The output uses a binary direct-access file structure with 1024 byte records (<code class="highlighter-rouge">L_REC4 = 256</code> of 32-bit words), a compromise between I/O speed and the possibility to selectively access individual atom data in the binary files. All the binary data are aligned with the 32-bit word length.</p>
 
-<p>The first three records contain header information, which is stored in text format, so that it can be displayed without knowledge of the details of the binary file structure.</p>
+<p>The first three records contain header information, which is stored in text format, so that it can be displayed in ASCII without knowledge of the details of the binary file structure.</p>
 
 <p><code class="highlighter-rouge">RECORD 1</code> contains information on the origin of the data (<code class="highlighter-rouge">MPtools</code>), version of the program (1.54), number of header lines (including this one) and time stamp:</p>
 <blockquote>

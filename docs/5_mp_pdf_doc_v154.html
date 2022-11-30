@@ -166,7 +166,7 @@
 <div class="sidebar-item sidebar-footer">
   <br>
   <br>
-	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+	<p>Copyright (C) <a href="mailto:contact@mptools.fr">Jiri Kulda</a></p>
   <br>
 	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
 </div>
@@ -185,7 +185,7 @@
 <br />
 On input only binary data imported by the <code class="highlighter-rouge">CELL</code> method are eligible. The <code class="highlighter-rouge">BULK</code> input method does not relate atom positions to their unit cells and does not index them in a systematic order, as a consequence it is not possible to find pairs of atoms in a deterministic way (without searching the whole box).<br />
 <br />
-The behaviour of <code class="highlighter-rouge">MP_PDF</code> can be adjusted by setting parameter values of the <code class="highlighter-rouge">&amp;MP_PDF</code> namelist in the <code class="highlighter-rouge">.PAR</code> file. Uniform (unit) or neutron weights can be choosen for the PDF presentation. Proper implementation of Xray formfactors calls for calculation of the structure factors (Fourier transform) and so far is not implemented. The resulting PDF distributions can be smoothed/broadened to emulate the resolution broadening of experimental data. These options are to be specified in the <code class="highlighter-rouge">&amp;MP_PDF</code> section of the <code class="highlighter-rouge">.PAR</code> file together with the PDF step and range and with the partial correlation atom pairs</p>
+The behaviour of <code class="highlighter-rouge">MP_PDF</code> can be adjusted by setting the <code class="highlighter-rouge">&amp;MP_PDF</code> namelist parameter values in the <code class="highlighter-rouge">.PAR</code> file. Uniform (unit) or neutron weights can be choosen for the PDF presentation. The resulting PDF distributions can be smoothed/broadened to emulate the resolution broadening of experimental data. These options are to be specified in the <code class="highlighter-rouge">&amp;MP_PDF</code> section of the <code class="highlighter-rouge">.PAR</code> file together with the PDF step and range and with the partial correlation atom pairs</p>
 
 <blockquote>
   <p>&amp;MP_PDF<br />
@@ -197,9 +197,9 @@ The behaviour of <code class="highlighter-rouge">MP_PDF</code> can be adjusted b
     N_CORR = 1             ! number of partial correlation pairs to be accumulated</p>
 </blockquote>
 
-<p>The number of Monte-Carlo events to be generated is specified in units of 10^6 cell pairs. Ten or a few tens are sufficient for most purposes. Hence a medium sized supercell (&gt; 10^4 atoms) provides enough data to generate a usable PDF set. In case of fractional occupancies the supercell size may prove too small. For such cases the input dialogue permits to define partial sampling of a larger number of snapshots (supercells). 
+<p>The number of Monte-Carlo events to be generated is specified in units of 10<sup>6</sup> cell pairs. Ten or a few tens are sufficient for most purposes. Hence a medium sized supercell (&gt; 10<sup>4</sup> atoms) provides enough data to generate a usable PDF set. In case of fractional occupancies the supercell size may prove too small. For such cases the input dialogue permits to define partial sampling of a larger number of snapshots (supercells). 
 <br />
-In addition to the total PDF also <code class="highlighter-rouge">N_CORR</code> partial PDFs corresponding to atom pairs indicated in the <code class="highlighter-rouge">.PAR</code> file in <code class="highlighter-rouge">PDF_PAIRS</code> list can be accumulated and displayed. Output files in the <code class="highlighter-rouge">.PS</code> (graphics) and <code class="highlighter-rouge">.TXT</code> (PDF tables) formats can be generated upon request.</p>
+Together with the total PDF also the output of up to four partial PDFs, corresponding to atom pairs indicated in the <code class="highlighter-rouge">.PAR</code> file in <code class="highlighter-rouge">PDF_PAIRS</code> list, can be requested for display on a single page. The optional output files in the <code class="highlighter-rouge">.PS</code> (graphics) and <code class="highlighter-rouge">.TXT</code> (PDF tables) formats can be requested in the dialogue.</p>
 
 	</div>
 </article>

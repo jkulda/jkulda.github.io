@@ -166,7 +166,7 @@
 <div class="sidebar-item sidebar-footer">
   <br>
   <br>
-	<p>Copyright (C) <a href="mailto:jkulda@free.fr">Jiri Kulda</a></p>
+	<p>Copyright (C) <a href="mailto:contact@mptools.fr">Jiri Kulda</a></p>
   <br>
 	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
 </div>
@@ -203,14 +203,14 @@
 
 <p>Consult the related log file in the <code class="highlighter-rouge">EXAMPLES</code> folder for a more detailed idea on how to run this tool.</p>
 
-<p>In general the recommended input method is <code class="highlighter-rouge">CELL</code>. In cases where the one-to-one assignment of atoms to lattice positions in unit cells is impossible or unreliable the dump data can be read in the <code class="highlighter-rouge">BULK</code> mode. More details on the input methods are given on the <a href="1_mp_data_doc_v154.html">data handling</a> page.<br />
+<p>In general the recommended input method is <code class="highlighter-rouge">CELL</code>. In cases where the one-to-one assignment of atoms to lattice positions in unit cells is impossible or unreliable the dump data can be read in the <code class="highlighter-rouge">BULK</code> mode. More details on the input methods are given on the <a href="/docs/1_mp_data_doc_v154.html">Data handling</a> page.<br />
 <br /></p>
 
-<p>In <code class="highlighter-rouge">DL_POLY</code> there is no analogy to the <code class="highlighter-rouge">TYPE</code> key of <code class="highlighter-rouge">LAMMPS</code>, hence already when setting up the MD simulation it is advisable to assign specific names (eg. O1,O2 …) to atoms in special positions in the unit cell. In such a case one can set <code class="highlighter-rouge">J_BASIS=1</code> so that <code class="highlighter-rouge">MP_DBIN</code> does not need to attempt the atom identification by position, as would be the case for <code class="highlighter-rouge">J_BASIS=0</code>.<br />
+<p>In <code class="highlighter-rouge">DL_POLY</code> there is no analogy to the <code class="highlighter-rouge">TYPE</code> key of <code class="highlighter-rouge">LAMMPS</code>, hence already when setting up the MD simulation it is advisable to assign specific names (eg. <code class="highlighter-rouge">O1</code>,<code class="highlighter-rouge">O2</code> …) to atoms in special positions in the unit cell. In such a case one can set <code class="highlighter-rouge">J_BASIS=1</code> so that <code class="highlighter-rouge">MP_DBIN</code> does not need to attempt the atom identification by position, as would be the case for <code class="highlighter-rouge">J_BASIS=0</code>.<br />
 <br /></p>
 
 <p>NOTE:
-it is important to define correctly the sign of the basis vectors in the <code class="highlighter-rouge">.PAR</code> file. As <code class="highlighter-rouge">DL_POLY</code> dumps the simulation box by atom types, it may not be an easy task to check this by inspecting the huge ASCII snapshot file, which at its beginning contains thousands of lines related to the atom sitting at the origin of the unit cell. A quick help is the UNIX/LINUX <code class="highlighter-rouge">tail</code> command , which will display the last 10 lines (or any other specified number) of the trajectory file with atoms in a non trivial position.</p>
+In cases when the <code class="highlighter-rouge">CELL</code> input method attempts to identify atoms by their position it is <strong>absolutely essential</strong> to define correctly the sign of the basis vectors in the <code class="highlighter-rouge">ATOMS</code> section of the <code class="highlighter-rouge">.PAR</code> file. As <code class="highlighter-rouge">DL_POLY</code> dumps the simulation box by atom types, it may not be an easy task to check this by inspecting the huge ASCII snapshot file, which at its beginning contains thousands of lines related to the atom sitting at the origin of the unit cell. A quick help is the UNIX/LINUX <code class="highlighter-rouge">tail</code> command , which will display the last 10 lines (or any other specified number) of the trajectory file with atoms in a non trivial position.</p>
 
 	</div>
 </article>
