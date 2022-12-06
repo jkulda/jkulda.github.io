@@ -181,11 +181,11 @@
 	</header>
 
 	<div class="post-content">
-		<p><code class="highlighter-rouge">MPtools</code> is a free software package available for public use, redistribution and further modification subject to the terms of the <a href="https://www.gnu.org/licenses/">GNU GPL v3</a> license.</p>
+		<p><code class="highlighter-rouge">MP_tools</code> is a free software package available for public use, redistribution and further modification subject to the terms of the <a href="https://www.gnu.org/licenses/">GNU GPL v3</a> license.</p>
 
 <h4 id="1-hardware-and-software-requirements">1/ Hardware and software requirements</h4>
 
-<p><code class="highlighter-rouge">MPtools</code> are written in Fortran making extensive use of F95 features (pointers, dynamical array allocation, vector operations). As a result the treated data size only depends on the installed computer memory and on the operation system’s efficiency in managing it. 
+<p><code class="highlighter-rouge">MP_tools</code> are written in Fortran making extensive use of F95 features (pointers, dynamical array allocation, vector operations). As a result the treated data size only depends on the installed computer memory and on the operation system’s efficiency in managing it. 
 <br />
 The code has been tested to work from command-line interface on the <code class="highlighter-rouge">Ubuntu</code> (linux) and <code class="highlighter-rouge">Mac OS X Darwin</code> (unix) systems. In principle, with adequate compiler and environment settings, the same should be true for <code class="highlighter-rouge">Windows</code> systems.<br />
 <br />
@@ -222,16 +222,16 @@ Hardware requirements:</p>
   </li>
 </ul>
 
-<h4 id="2-download-mptools">2/ Download <code class="highlighter-rouge">MPtools</code></h4>
+<h4 id="2-download-mp_tools">2/ Download <code class="highlighter-rouge">MP_tools</code></h4>
 
-<p>The most practical way to obtain the latest version of <code class="highlighter-rouge">MPtools</code> is to <a href="https://github.com/jkulda/MPtools/archive/refs/heads/master.zip">download</a> it from the Github <a href="https://github.com/jkulda/MPtools">MPtools</a> repository. Alternatively, you may <code class="highlighter-rouge">git clone</code> it directly from the command line</p>
+<p>The most practical way to obtain the latest version of <code class="highlighter-rouge">MP_tools</code> is to <a href="https://github.com/jkulda/MP_tools/archive/refs/heads/master.zip">download</a> it from the Github <a href="https://github.com/jkulda/MP_tools">MPtools</a> repository. Alternatively, you may <code class="highlighter-rouge">git clone</code> it directly from the command line</p>
 <blockquote>
   <p>git clone https://github.com/jkulda/MPtools</p>
 </blockquote>
 
-<h4 id="3-compile-and-install-mptools">3/ Compile and install <code class="highlighter-rouge">MPtools</code></h4>
+<h4 id="3-compile-and-install-mp_tools">3/ Compile and install <code class="highlighter-rouge">MP_tools</code></h4>
 
-<p>To install <code class="highlighter-rouge">MPtools</code> in the unix and linux environments (you may need the <code class="highlighter-rouge">sudo</code> privileges):</p>
+<p>To install <code class="highlighter-rouge">MP_tools</code> in the unix and linux environments (you may need the <code class="highlighter-rouge">sudo</code> privileges):</p>
 <ul>
   <li>copy the distribution archive into a suitable location (outside the <code class="highlighter-rouge">/usr/local</code> tree) and uncompress it</li>
   <li>
@@ -246,9 +246,9 @@ script according to whether you prefer to overwrite the binaries of a possible p
 calls to help localise the fault origins; similarly, in case of stable operation feel free to attempt more aggressive code optimisation by replacing the <code class="highlighter-rouge">-O</code> option by <code class="highlighter-rouge">-O3</code> and by adding <code class="highlighter-rouge">-march=native</code> (or any specific architecture indentifier, cf. the GCC documentation)</li>
 </ul>
 
-<p>For the moment there is no <code class="highlighter-rouge">makefile</code> as the <code class="highlighter-rouge">MPtools</code> are a suite of relatively short standalone code segments; in case of modifications they can be recompiled individually copying just a single line from the compiling script to the command line. The executables will be automatically placed into <code class="highlighter-rouge">/usr/local/bin</code>, which is normally part of the execution path.<br />
+<p>For the moment there is no <code class="highlighter-rouge">makefile</code> as the <code class="highlighter-rouge">MP_tools</code> are a suite of relatively short standalone code segments; in case of modifications they can be recompiled individually copying just a single line from the compiling script to the command line. The executables will be automatically placed into <code class="highlighter-rouge">/usr/local/bin</code>, which is normally part of the execution path.<br />
 <br />
-Check the <a href="/docs/8_mp_tools_use_v154.html">Getting started</a> section on how to start using <code class="highlighter-rouge">MPtools</code>.</p>
+Check the <a href="/docs/8_mp_tools_use_v154.html">Getting started</a> section on how to start using <code class="highlighter-rouge">MP_tools</code>.</p>
 
 	</div>
 </article>

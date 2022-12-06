@@ -240,7 +240,7 @@
 
 <p>In general the LAMMPS output refers to the time variable in terms of number of timesteps, which appears in the DUMP command as well as in the filename extensions for the individual dump files. The only way to access the MD timestep length, and hence the real time scale, is to use the <code class="highlighter-rouge">DUMP_MODIFY</code> directive to impose the time values to be recorded in the dump file headers (cf. below). If the corresponding tag is absent in the file header, <code class="highlighter-rouge">MP_LBIN</code> will ask for the elementary MD timestep length in the input dialogue.</p>
 
-<p>The standard <code class="highlighter-rouge">DUMP</code> directive (within the LAMMPS input file <code class="highlighter-rouge">in.*</code>)	specifies the output style. For the purpose of <code class="highlighter-rouge">MPtools</code> the <code class="highlighter-rouge">ATOM</code> style or its modifications (<code class="highlighter-rouge">CUSTOM</code>) are most relevant. The style defines the output file structure (single snapshots vers. concatenated trajectory) and the contents output records, eg.</p>
+<p>The standard <code class="highlighter-rouge">DUMP</code> directive (within the LAMMPS input file <code class="highlighter-rouge">in.*</code>)	specifies the output style. For the purpose of <code class="highlighter-rouge">MP_tools</code> the <code class="highlighter-rouge">ATOM</code> style or its modifications (<code class="highlighter-rouge">CUSTOM</code>) are most relevant. The style defines the output file structure (single snapshots vers. concatenated trajectory) and the contents output records, eg.</p>
 
 <blockquote>
   <p><code class="highlighter-rouge">dump 1 all atom 50 ${fil_nam}.*</code></p>
