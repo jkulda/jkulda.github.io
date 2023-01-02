@@ -176,30 +176,34 @@
 			<article class="post">
 	<header class="post-header home">
 		<div class="post-title"> 
-			Pair distribution functions
+			About
 		</div>
 	</header>
 
 	<div class="post-content">
-		<p>The <code class="highlighter-rouge">MP_PDF</code> tool calculates the total and partial pair distribution functions (PDF) by direct real-space sampling and binning of atom distances between pairs of unit cells in the simulation box. The present version employs solely the Monte-Carlo pseudo-random sampling using the new <code class="highlighter-rouge">RANDOM_NUMBER</code> intrinsic generator of <code class="highlighter-rouge">GFORTRAN</code>.<br />
-<br />
-On input only binary data imported by the <code class="highlighter-rouge">CELL</code> method are eligible. The <code class="highlighter-rouge">BULK</code> input method does not relate atom positions to their unit cells and does not index them in a systematic order, as a consequence it is not possible to find pairs of atoms in a deterministic way (without searching the whole box).<br />
-<br />
-The behaviour of <code class="highlighter-rouge">MP_PDF</code> can be adjusted by setting the <code class="highlighter-rouge">&amp;MP_PDF</code> namelist parameter values in the <code class="highlighter-rouge">.PAR</code> file. Uniform (unit) or neutron weights can be choosen for the PDF presentation. The resulting PDF distributions can be smoothed/broadened to emulate the resolution broadening of experimental data. These options are to be specified in the <code class="highlighter-rouge">&amp;MP_PDF</code> section of the <code class="highlighter-rouge">.PAR</code> file together with the PDF step and range and with the partial correlation atom pairs</p>
+		<h3 id="acknowledgements">Acknowledgements</h3>
+<p>The <code class="highlighter-rouge">MP_tools</code> software makes use of the work of others. For detailed licence info see the <code class="highlighter-rouge">/contrib</code> directory in the distribution.<br />
+In particular the implementation of <b>non-uniform FFT</b> by <b>A.H. Barnett</b> (Flatiron Institute, NYC, US) has to be mentioned, as it did provide the keystone of the tremendous speed gain in calculations of the scattering functions S(Q) and S(Q,ω).<br />
+Last but not least, the most substantial part of <b>external motivation</b> and help with <b>beta-testing</b> of <code class="highlighter-rouge">MP_tools</code> is due to my colleagues from the <a href="http://palata.fzu.cz/diel/index.php">Department of Dielectrics</a>, Institute of Physics, ASCR, Prague.</p>
 
-<blockquote>
-  <p>&amp;MP_PDF<br />
-    N_PDF = 1024           ! dimension of the PDF array (2**N best for FFT)<br />
-    PDF_STEP = .02	        ! PDF step [Å]		useful choice: n_pdf=1024, pdf_step=.02<br />
-    J_ACC = 2              ! accumulation algorithm: 2 Monte Carlo sampling<br />
-    N_H = 20               ! x10^6 MC sampling events (optimum ≥20)<br />
-    J_SMOOTH = 1           ! smoothing the PDF: 1 none (2-8 useful, 0 interactive mode)<br />
-    N_CORR = 1             ! number of partial correlation pairs to be accumulated</p>
-</blockquote>
+<h3 id="licence">Licence</h3>
+<p><code class="highlighter-rouge">MP_tools</code> are free software: feel free to use it, redistribute it and/or modify it 
+under the terms of the <a href="https://www.gnu.org/licenses/gpl-3.0.html"><b>GNU General Public License</b></a>. The accompanying documentation including the contents of this site, is subject to the <a href="https://www.gnu.org/licenses/#FDL">GNU Free Documentation License</a>. The <code class="highlighter-rouge">mptools.fr</code> site is subject to <b>copyright</b>: its contents cannot be reproduced (entire or part) without written permission of the author.</p>
 
-<p>The number of Monte-Carlo events to be generated is specified in units of 10<sup>6</sup> cell pairs. Ten or a few tens are sufficient for most purposes. Hence a medium sized supercell (&gt; 10<sup>4</sup> atoms) provides enough data to generate a usable PDF set. In case of fractional occupancies the supercell size may prove too small. For such cases the input dialogue permits to define partial sampling of a larger number of snapshots (supercells). 
-<br />
-Together with the total PDF also the output of up to four partial PDFs, corresponding to atom pairs indicated in the <code class="highlighter-rouge">.PAR</code> file in <code class="highlighter-rouge">PDF_PAIRS</code> list, can be requested for display on a single page. The optional output files in the <code class="highlighter-rouge">.PS</code> (graphics) and <code class="highlighter-rouge">.TXT</code> (PDF tables) formats can be requested in the dialogue.</p>
+<h3 id="disclaimer">Disclaimer</h3>
+<p>This software and the accompanying documentation, including the contents of this site, are provided in the hope that they will be useful, but <b>WITHOUT ANY WARRANTY</b>; without even the implied warranty of <b>MERCHANTABILITY</b> or <b>FITNESS FOR A PARTICULAR PURPOSE</b>. See the <b>GNU General Public License</b> for more details.<br />
+Despite life-long experience in neutron and Xray scattering, mistakes and misunderstandings cannot be excluded, neither in the software nor in the accompanying documentation on this site - in any case of doubt, please, contact the <a href="mailto:contact@mptools.fr">author</a>.</p>
+
+<h3 id="author">Author</h3>
+
+<p>The <code class="highlighter-rouge">MP_tools</code> package is being conceived, developed and maintained by <b>Jiri Kulda</b>, instrument group leader emeritus at the <a href="https:www.ill.eu">Institut Laue-Langevin</a>, Grenoble, France.<br />
+If you find this library useful, or it helps you in creating software or publications, 
+please let me know and acknowledge <code class="highlighter-rouge">MP_tools</code> by citing this <a href="https://github.com/jkulda/MP_tools">repository</a> and the corresponding journal papers (to come).</p>
+
+<h3 id="contact">Contact</h3>
+<p>For any communication concerning <code class="highlighter-rouge">MP_tools</code> kindly use, please, the dedicated <a href="mailto:contact@mptools.fr">email address</a>. In particular, be encouraged to help improving <code class="highlighter-rouge">MP_tools</code> by contributing questions, comments, suggestions as well as bug report.
+Although the <code class="highlighter-rouge">MP_tools</code> code is freely downloadable from its <a href="https://github.com/jkulda/MPtools">Github depository</a>, it is a good idea for the prospective users to get in contact with me in order to receive information on important bug fixes and new releases in the future.</p>
+
 
 	</div>
 </article>

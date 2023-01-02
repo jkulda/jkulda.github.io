@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/sample/2020/01/02/post1.html</loc>
-<lastmod>2020-01-02T11:20:23+01:00</lastmod>
-</url>
-<url>
-<loc>/jekyll/update/2020/01/02/welcome-to-jekyll.html</loc>
-<lastmod>2020-01-02T11:31:29+01:00</lastmod>
-</url>
-<url>
-<loc>/pages/0_README.html</loc>
+<loc>/docs/0_README.html</loc>
 </url>
 <url>
 <loc>/docs/1_mp_data_doc_154.html</loc>
-</url>
-<url>
-<loc>/pages/1_mp_tools_install_v154.html</loc>
 </url>
 <url>
 <loc>/docs/2_mp_lbin_doc_v154.html</loc>
@@ -36,16 +25,16 @@
 <loc>/docs/7_mp_sqom_doc_154.html</loc>
 </url>
 <url>
+<loc>/docs/8_mp_tools_install_v154.html</loc>
+</url>
+<url>
 <loc>/docs/8_mp_tools_use_v154.html</loc>
 </url>
 <url>
+<loc>/docs/9_mp_tools_about.html</loc>
+</url>
+<url>
 <loc>/category/</loc>
-</url>
-<url>
-<loc>/docs/docs_index.html</loc>
-</url>
-<url>
-<loc>/examples/examples_index.html</loc>
 </url>
 <url>
 <loc>/</loc>
