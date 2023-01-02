@@ -232,44 +232,129 @@
 		<div class="content">
 			<article class="post">
 	<header class="post-header home">
-		<div class="post-title">Category - <span id='category-name'></span></div>
+		<div class="post-title">Documentation</div>
 	</header>
 
-	<div class="post-content"><ul class="post-list"><li class="post-list-item post-category-jekyllupdate">
-				<!----><span class="post-date">2020/01/02</span>
-				<a class="post-link" href="/jekyll/update/2020/01/02/welcome-to-jekyll.html">
-					Welcome to Jekyll!
-				</a></li><li class="post-list-item post-category-sample">
-				<!----><span class="post-date">2020/01/02</span>
-				<a class="post-link" href="/sample/2020/01/02/post1.html">
-					post-sample
-				</a></li></ul></div>
-</article>
+	<div class="post-content">
 
-<script src="/public/js/jquery-3.4.1.slim.min.js"></script>
-<script>
-	function removeCategory() {
-		if (window.location.hash) {
-			let hash = window.location.hash.substring(1);
-			$('#category-name').text(hash.substring(0, 1).toUpperCase() + hash.substring(1));
-			let category_class = '.post-category-' + hash;
-			let items = $('.post-list-item').each((i, e) => {
-				if (!$(e).hasClass('post-category-' + hash)) {
-					$(e).hide();
-				} else {
-					$(e).show();
-				}
-			});
-		}
-	}
-	$(window).on('hashchange', () => {
-		removeCategory();
-	});
-	$(document).ready(() => {
-		removeCategory();	
-	})
-	
-</script>
+	  
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a href="/docs/1_mp_data_doc_154.html">
+	            	Data handling
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a href="/docs/2_mp_lbin_doc_v154.html">
+	            	General ASCII data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a href="/docs/3_mp_dbin_doc_v154.html">
+	            	DLPOLY data input
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a href="/docs/4_mp_insp_doc_v154.html">
+	            	Binary data check
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a href="/docs/5_mp_pdf_doc_v154.html">
+	            	Pair distribution functions
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a href="/docs/6_mp_dos_doc_v154.html">
+	            	Vibrational density of states
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a href="/docs/7_mp_sqom_doc_154.html">
+	            	S(Q) and S(Q,ω) intensity maps
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a href="/docs/8_mp_tools_use_v154.html">
+	            	Get started
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+
+		
+
+
+	</div>
+</article>
 
 		</div>
 	</div>
