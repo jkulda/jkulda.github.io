@@ -101,9 +101,9 @@
 	    
 	  
 	    
-	      
-	    
 	  
+	    
+	      
 	    
 	  
 	    
@@ -117,9 +117,11 @@
 	  	<a class="nav-item" href="/docs/docs_index.html">Documentation</a>
 	  </li>
 	  
-	  <li>
+<!--	  <li>
 	  	<a class="nav-item" href="/examples/examples_index.html">Examples</a>
-	  </li>
+	  </li> -->
+
+	  	<a class="nav-item" href="/docs/readme_examples.html">Examples</a>
 	  
 
 	</ul>
@@ -135,7 +137,7 @@
 	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
  <br>
 	<p>Last updated:</a></p>
-	<p><a>2023-01-02 11:51:31 +0100</a></p>
+	<p><a>2023-01-05 11:25:07 +0100</a></p>
 </div>
 
 
@@ -211,9 +213,9 @@
 	    
 	  
 	    
-	      
-	    
 	  
+	    
+	      
 	    
 	  
 	    
@@ -244,7 +246,7 @@
 
 <p>Before going into the details of the input methods described below, please read carefully the general introduction to <a href="/docs/1_mp_data_doc_v154.html">data handling</a>.</p>
 
-<p>The LAMMPS dump data are expected to come as a succession of numbered (filename extension) snapshot files. In this case <code class="highlighter-rouge">MP_LBIN</code> will decode their header contents, reducing (but not eliminating) the need of additional information from the <code class="highlighter-rouge">.PAR</code> file.</p>
+<p>The <a href="https://www.lammps.org"><code class="highlighter-rouge">LAMMPS</code></a> dump data are expected to come as a succession of numbered (filename extension) snapshot files. In this case <code class="highlighter-rouge">MP_LBIN</code> will decode their header contents, reducing (but not eliminating) the need of additional information from the <code class="highlighter-rouge">.PAR</code> file.</p>
 
 <p>Otherwise <code class="highlighter-rouge">MP_LBIN</code> can read a contiguous succession of numbered snapshot files, a concatenated trajectory, containing all snapshots in a single file, or a combination of both. The corresponding information is specified in the <code class="highlighter-rouge">.PAR</code> file and in the input dialogue. It is the user’s responsibility to transfer carefully all the pertinent information (available in the data file header or elsewhere) into the corresponding fields in the <code class="highlighter-rouge">.PAR</code> file manually.</p>
 

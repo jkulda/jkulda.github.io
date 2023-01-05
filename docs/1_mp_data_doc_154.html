@@ -101,9 +101,9 @@
 	    
 	  
 	    
-	      
-	    
 	  
+	    
+	      
 	    
 	  
 	    
@@ -117,9 +117,11 @@
 	  	<a class="nav-item" href="/docs/docs_index.html">Documentation</a>
 	  </li>
 	  
-	  <li>
+<!--	  <li>
 	  	<a class="nav-item" href="/examples/examples_index.html">Examples</a>
-	  </li>
+	  </li> -->
+
+	  	<a class="nav-item" href="/docs/readme_examples.html">Examples</a>
 	  
 
 	</ul>
@@ -135,7 +137,7 @@
 	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
  <br>
 	<p>Last updated:</a></p>
-	<p><a>2023-01-02 11:51:31 +0100</a></p>
+	<p><a>2023-01-05 11:25:07 +0100</a></p>
 </div>
 
 
@@ -211,9 +213,9 @@
 	    
 	  
 	    
-	      
-	    
 	  
+	    
+	      
 	    
 	  
 	    
@@ -242,7 +244,7 @@
 
 <h4 id="1-simulation-types">1/ SIMULATION TYPES</h4>
 
-<p><code class="highlighter-rouge">MP_tools</code> were originally developed to treat sequences of dump files from <code class="highlighter-rouge">DL_POLY</code> molecular dynamics (MD) simulations. Later on their use has been extended to treatment of output from other sources. The type of simulation has to be specified in the associated parameter file (<code class="highlighter-rouge">.PAR</code>) by specifying</p>
+<p><code class="highlighter-rouge">MP_tools</code> were originally developed to treat sequences of dump files from <a href="https://www.scd.stfc.ac.uk/Pages/DL_POLY.aspx"><code class="highlighter-rouge">DL_POLY</code></a> molecular dynamics (MD) simulations. Later on their use has been extended to treatment of output from other sources. The type of simulation has to be specified in the associated parameter file (<code class="highlighter-rouge">.PAR</code>) by specifying</p>
 
 <blockquote>
   <p>sim_type = ‘TIMESTEP’</p>
@@ -252,7 +254,7 @@
 
 <h4 id="2-data-types">2/ DATA TYPES</h4>
 
-<p>At present <code class="highlighter-rouge">MP_tools</code> can handle ASCII output data from a vast variety of simulation packages. For historical reasons <code class="highlighter-rouge">DL_POLY</code> and <code class="highlighter-rouge">LAMMPS</code> (MD) are particular cases, for which the file header contents is decoded to provide automatically the accompanying information on auxiliary parameters of the simulation and on the details of the data structure within the two respective input tools <code class="highlighter-rouge">MP_DBIN</code> and <code class="highlighter-rouge">MP_LBIN</code>. In all other cases the user has to fill in the corresponding parameter values into the accompanying <code class="highlighter-rouge">.PAR</code> file (cf. templates in this package) and provide a symbolic description of the data records, which will be parsed by the input code of the <code class="highlighter-rouge">MP_LBIN</code> tool .</p>
+<p>At present <code class="highlighter-rouge">MP_tools</code> can handle ASCII output data from a vast variety of simulation packages. For historical reasons <a href="https://www.scd.stfc.ac.uk/Pages/DL_POLY.aspx"><code class="highlighter-rouge">DL_POLY</code></a> and <a href="https://www.lammps.org"><code class="highlighter-rouge">LAMMPS</code></a> (MD) are particular cases, for which the file header contents is decoded to provide automatically the accompanying information on auxiliary parameters of the simulation and on the details of the data structure within the two respective input tools <code class="highlighter-rouge">MP_DBIN</code> and <code class="highlighter-rouge">MP_LBIN</code>. In all other cases the user has to fill in the corresponding parameter values into the accompanying <code class="highlighter-rouge">.PAR</code> file (cf. templates in this package) and provide a symbolic description of the data records, which will be parsed by the input code of the <code class="highlighter-rouge">MP_LBIN</code> tool .</p>
 
 <p>The data type has to be specified by setting</p>
 

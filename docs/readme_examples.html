@@ -233,33 +233,22 @@
 		</div>
 		<div class="content">
 			<article class="post">
-	<header class="post-header">
+	<header class="post-header home">
 		<div class="post-title"> 
-			Welcome to Jekyll!
+			Examples
 		</div>
-		<time class="post-date dt-published" datetime="2020-01-02T11:31:29+01:00" itemprop="datePublished">2020/01/02
-		</time>		
 	</header>
 
 	<div class="post-content">
-		<p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+		<p>The <code class="highlighter-rouge">examples</code> directory of the <code class="highlighter-rouge">MP_tools</code> distribution contains input and output files together with command line logs related to several runs on brief sequences of five snapshot dumps from more extended MD simulations. Obviously, such short MD sequences do not provide any meaningful access to functionalities concerning inelastic scattering - these call for MD sequences of 10^2 to 10^4 MD snapshots (do not hesitate to contact the author for assistance).<br />
+<br /></p>
 
-<p>Jekyll requires blog post files to be named according to the following format:</p>
+<p>The first example is part of a <a href="https://www.scd.stfc.ac.uk/Pages/DL_POLY.aspx"><code class="highlighter-rouge">DL_POLY</code></a> run on a baryum titanate box consisting of 50 x 50 x 50 elementary cells (for details cf. Pasciak et al., PRL 120, 167601 (2018)), in the second case a <a href="https://www.lammps.org"><code class="highlighter-rouge">LAMMPS</code></a> run on a copper box of 48 x 48 x 48 cells. In the <code class="highlighter-rouge">LAMMPS</code> case the file numbering together with the elementary time step (microstep) of 0.0002 ps and the dumps after each 50 microsteps result in a time sequence with a 0.01 ps step.  <br />
+<br />
+In the case of <code class="highlighter-rouge">LAMMPS</code> data the whole run can be reproduced, once the <code class="highlighter-rouge">MP_tools</code> are properly installed. As a guide may serve the <code class="highlighter-rouge">mp_tools_lammps_cu_48_log.txt</code> file containing a dump of the related command line dialogue. Because of data volume limitations the <code class="highlighter-rouge">DL_POLY</code> example contains only a stub of the trajectory ASCII dump file, yet the binary data again can be used to reproduce the other <code class="highlighter-rouge">MP_TOOLS</code> operations. Again the command line log <code class="highlighter-rouge">mp_tools_dl_poly_BTO500c_log.txt</code> is available for reference. All the timings in both cases correspond to a Mac Book Pro (early-2015) with an INTEL i7_core2 processor and 16Gb memory.<br />
+<br /></p>
 
-<p><code class="highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p>
-
-<p>Where <code class="highlighter-rouge">YEAR</code> is a four-digit number, <code class="highlighter-rouge">MONTH</code> and <code class="highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
-
-<p>Jekyll also offers powerful support for code snippets:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
-
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
-
+<p>In the two cases <b>a particular importance</b> have the parameter (<code class="highlighter-rouge">.PAR</code>) files <code class="highlighter-rouge">BTO500c.par</code> and <code class="highlighter-rouge">cu_c48.par</code>, which can be used - after a careful examination and update of the options - as templates for any further work.</p>
 
 	</div>
 </article>
