@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="MPtools" /></head>
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>MPtools</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/index.html">
+			<img src="/public/img/mp_logo_b43h_light.jpg" width=100%>
+    </a>
+	</div>
+
+	<!--
+	<div class='sidebar-brand'>
+		<a href="/diffuse-scattering-models/">MPtools</a>
+	</div>
+-->
+	<p class="lead">neutron and Xray diffuse scattering from distorted lattices</p>
+</div>
+
+	<br>
+
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+
+<!--	  <li>
+	  	<a class="nav-item" href="/index.html">Home</a>
+	  </li> -->
+
+	  
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/pages/0_README.html">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/pages/1_mp_tools_install_v154.html">
+	            	Download and install
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+
+	  <li>
+	  	<a class="nav-item" href="/docs/docs_index.html">Documentation</a>
+	  </li>
+	  
+<!--	  <li>
+	  	<a class="nav-item" href="/examples/examples_index.html">Examples</a>
+	  </li> -->
+
+	  	<a class="nav-item" href="/docs/readme_examples.html">Examples</a>
+	  
+
+	</ul>
+
+</div>
+
+
+<div class="sidebar-item sidebar-footer">
+  <br>
+  <br>
+	<p>Copyright (C) <a href="mailto:contact@mptools.fr">Jiri Kulda</a></p>
+  <br>
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+ <br>
+	<p>Last updated:</a></p>
+	<p><a>2023-01-06 17:17:54 +0100</a></p>
+</div>
+
+
+<!--
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/pages/0_README.html">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/pages/1_mp_tools_install_v154.html">
+	            	Download and install
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+
+
+-->
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header home">
+		<div class="post-title"> 
+			Pair distribution functions
+		</div>
+	</header>
+
+	<div class="post-content">
+		<p>The <code class="highlighter-rouge">MP_PDF</code> tool calculates the total and partial pair distribution functions (PDF) by direct real-space sampling and binning of atom distances between pairs of unit cells in the simulation box. The present version employs solely the Monte-Carlo pseudo-random sampling using the new <code class="highlighter-rouge">RANDOM_NUMBER</code> intrinsic generator of <code class="highlighter-rouge">GFORTRAN</code>.<br />
+<br />
+On input only binary data imported by the <code class="highlighter-rouge">CELL</code> method are eligible. The <code class="highlighter-rouge">BULK</code> input method does not relate atom positions to their unit cells and does not index them in a systematic order, as a consequence it is not possible to find pairs of atoms in a deterministic way (without searching the whole box).<br />
+<br />
+The behaviour of <code class="highlighter-rouge">MP_PDF</code> can be adjusted by setting the <code class="highlighter-rouge">&amp;MP_PDF</code> namelist parameter values in the <code class="highlighter-rouge">.PAR</code> file. Uniform (unit) or neutron weights can be choosen for the PDF presentation. The resulting PDF distributions can be smoothed/broadened to emulate the resolution broadening of experimental data. These options are to be specified in the <code class="highlighter-rouge">&amp;MP_PDF</code> section of the <code class="highlighter-rouge">.PAR</code> file together with the PDF step and range and with the partial correlation atom pairs</p>
+
+<blockquote>
+  <p>&amp;MP_PDF<br />
+    N_PDF = 1024           ! dimension of the PDF array (2**N best for FFT)<br />
+    PDF_STEP = .02	        ! PDF step [Å]		useful choice: n_pdf=1024, pdf_step=.02<br />
+    J_ACC = 2              ! accumulation algorithm: 2 Monte Carlo sampling<br />
+    N_H = 20               ! x10^6 MC sampling events (optimum ≥20)<br />
+    J_SMOOTH = 1           ! smoothing the PDF: 1 none (2-8 useful, 0 interactive mode)<br />
+    N_CORR = 1             ! number of partial correlation pairs to be accumulated</p>
+</blockquote>
+
+<p>The number of Monte-Carlo events to be generated is specified in units of 10<sup>6</sup> cell pairs. Ten or a few tens are sufficient for most purposes. Hence a medium sized supercell (&gt; 10<sup>4</sup> atoms) provides enough data to generate a usable PDF set. In case of fractional occupancies the supercell size may prove too small. For such cases the input dialogue permits to define partial sampling of a larger number of snapshots (supercells). 
+<br />
+Together with the total PDF also the output of up to four partial PDFs, corresponding to atom pairs indicated in the <code class="highlighter-rouge">.PAR</code> file in <code class="highlighter-rouge">PDF_PAIRS</code> list, can be requested for display on a single page. The optional output files in the <code class="highlighter-rouge">.PS</code> (graphics) and <code class="highlighter-rouge">.TXT</code> (PDF tables) formats can be requested in the dialogue.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>
